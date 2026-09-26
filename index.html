@@ -3,1502 +3,1589 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width,
-                   initial-scale=1.0,
-                   maximum-scale=1.0,
-                   user-scalable=no">
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
 
-    <title>CU IMS - Hostel Leave Apply</title>
+<title>CU IMS - Hostel Leave</title>
 
 
-    <style>
+<style>
 
-        /* =========================================================
-           GLOBAL
-        ========================================================= */
+/* =========================================================
+   RESET
+========================================================= */
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html {
+    background: #f4f4fa;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f5fb;
-            color: #111;
-            overflow-x: hidden;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4fa;
+    color: #111;
+    overflow-x: hidden;
+}
 
-        button,
-        input,
-        select {
-            font-family: Arial, Helvetica, sans-serif;
-        }
+button,
+input,
+select {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 
-        /* =========================================================
-           HEADER
-        ========================================================= */
+/* =========================================================
+   PERSON SELECTION SCREEN
+========================================================= */
 
-        .topbar {
+#personScreen {
 
-            position: fixed;
+    position: fixed;
 
-            top: 0;
-            left: 0;
-            right: 0;
+    inset: 0;
 
-            height: 85px;
+    background: #f4f4fa;
 
-            background: #ffffff;
+    display: flex;
 
-            border-bottom: 1px solid #dddddd;
+    align-items: center;
 
-            display: flex;
-            align-items: center;
+    justify-content: center;
 
-            z-index: 1000;
-        }
+    z-index: 5000;
+}
 
+.person-box {
 
-        /* Hamburger */
+    width: calc(100% - 40px);
 
-        .hamburger {
+    max-width: 360px;
 
-            width: 70px;
-            height: 85px;
+    background: white;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    border-radius: 10px;
 
-            cursor: pointer;
+    padding: 28px 22px;
 
-            flex-shrink: 0;
-        }
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.10);
 
-        .hamburger-lines {
-            width: 25px;
-        }
+    text-align: center;
+}
 
-        .hamburger-lines span {
+.person-logo {
 
-            display: block;
+    width: 95px;
 
-            width: 100%;
-            height: 2.5px;
+    margin-bottom: 20px;
+}
 
-            background: #333;
+.person-title {
 
-            margin: 5px 0;
+    color: #294982;
 
-            border-radius: 3px;
-        }
+    font-size: 20px;
 
+    font-weight: bold;
 
-        /* CU LOGO */
+    margin-bottom: 7px;
+}
 
-        .logo-area {
+.person-subtitle {
 
-            width: 245px;
+    color: #777;
 
-            display: flex;
-            align-items: center;
+    font-size: 12px;
 
-            padding-left: 5px;
-        }
+    margin-bottom: 22px;
+}
 
-        .logo-area img {
+.person-select {
 
-            width: 145px;
+    width: 100%;
 
-            height: auto;
+    height: 44px;
 
-            display: block;
-        }
+    border: 1px solid #ccc;
 
+    border-radius: 5px;
 
-        /* Search */
+    background: white;
 
-        .search-box {
+    padding: 0 12px;
 
-            height: 56px;
+    font-size: 14px;
 
-            width: min(750px, 100%);
+    color: #444;
 
-            background: #f2f2f2;
+    outline: none;
+}
 
-            border-radius: 30px;
+.enter-button {
 
-            display: flex;
-            align-items: center;
+    width: 100%;
 
-            padding: 0 28px;
+    height: 42px;
 
-            color: #777;
+    margin-top: 15px;
 
-            font-size: 16px;
-        }
+    border: none;
 
-        .search-text {
-            flex: 1;
-        }
+    border-radius: 5px;
 
-        .search-icon {
+    background: #4559a7;
 
-            width: 20px;
-            height: 20px;
+    color: white;
 
-            color: #555;
-        }
+    font-weight: bold;
 
+    font-size: 14px;
 
-        /* Header icons */
+    cursor: pointer;
+}
 
-        .header-icons {
+.enter-button:active {
+    transform: scale(.99);
+}
 
-            margin-left: auto;
 
-            display: flex;
-            align-items: center;
+/* =========================================================
+   HEADER
+========================================================= */
 
-            gap: 26px;
+.topbar {
 
-            padding: 0 24px;
-        }
+    position: fixed;
 
-        .header-icon {
+    top: 0;
+    left: 0;
+    right: 0;
 
-            width: 25px;
-            height: 25px;
+    height: 48px;
 
-            color: #777;
-        }
+    background: white;
 
+    border-bottom: 1px solid #ddd;
 
-        /* Profile */
+    display: flex;
 
-        .profile-box {
+    align-items: center;
 
-            width: 190px;
-            height: 85px;
+    z-index: 1000;
+}
 
-            border-left: 1px solid #e1e1e1;
 
-            display: flex;
-            align-items: center;
+/* Hamburger */
 
-            gap: 14px;
+.hamburger {
 
-            padding-left: 22px;
-        }
+    width: 32px;
 
-        .profile-name {
+    height: 48px;
 
-            color: #294982;
+    display: flex;
 
-            font-size: 16px;
+    align-items: center;
 
-            font-weight: bold;
-        }
+    justify-content: center;
 
-        .profile-id {
+    flex-shrink: 0;
+}
 
-            color: #777;
+.hamburger-lines {
 
-            font-size: 11px;
+    width: 18px;
+}
 
-            margin-top: 4px;
-        }
+.hamburger-lines span {
 
-        .profile-image {
+    display: block;
 
-            width: 46px;
-            height: 46px;
+    width: 100%;
 
-            border-radius: 50%;
+    height: 2px;
 
-            overflow: hidden;
+    background: #333;
 
-            background: #ddd;
+    margin: 3px 0;
 
-            border: 1px solid #aaa;
+    border-radius: 2px;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
 
-            font-size: 21px;
-        }
+/* Logo */
 
+.logo-area {
 
-        /* =========================================================
-           SIDEBAR
-        ========================================================= */
+    width: 76px;
 
-        .sidebar {
+    display: flex;
 
-            position: fixed;
+    align-items: center;
+}
 
-            top: 85px;
-            left: 0;
-            bottom: 0;
+.logo-area img {
 
-            width: 310px;
+    width: 67px;
 
-            background: #ffffff;
+    height: auto;
 
-            border-right: 1px solid #ddd;
+    display: block;
+}
 
-            overflow-y: auto;
 
-            z-index: 900;
-        }
+/* Header icons */
 
-        .sidebar-item {
+.header-icons {
 
-            min-height: 51px;
+    margin-left: auto;
 
-            padding: 0 18px;
+    display: flex;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    align-items: center;
 
-            color: #173d72;
+    gap: 9px;
 
-            font-size: 17px;
+    padding-right: 7px;
+}
 
-            line-height: 20px;
+.header-icon {
 
-            cursor: pointer;
-        }
+    width: 14px;
 
-        .sidebar-item:hover {
-            background: #f4f5f9;
-        }
+    height: 14px;
 
-        .sidebar-item.active {
+    color: #777;
 
-            color: white;
+    flex-shrink: 0;
+}
 
-            background: #45589c;
-        }
 
-        .sidebar-arrow {
+/* User DP */
 
-            font-size: 22px;
+.user-dp {
 
-            margin-left: 10px;
+    width: 29px;
 
-            color: #1c4c8a;
-        }
+    height: 29px;
 
-        .sidebar-item.active .sidebar-arrow {
-            color: white;
-        }
+    border-radius: 50%;
 
+    object-fit: cover;
 
-        /* Hostel submenu */
+    border: 1px solid #aaa;
 
-        .hostel-submenu {
-            display: none;
-        }
+    margin-right: 5px;
 
-        .hostel-submenu.open {
-            display: block;
-        }
+    background: #eee;
 
-        .submenu-item {
+    flex-shrink: 0;
+}
 
-            height: 43px;
 
-            padding-left: 38px;
+/*
+   IMPORTANT:
+   No username.
+   No UID.
+   Only the DP.
+*/
 
-            display: flex;
-            align-items: center;
 
-            color: #173d72;
+/* =========================================================
+   DESKTOP HEADER
+========================================================= */
 
-            font-size: 16px;
+@media (min-width: 769px) {
 
-            cursor: pointer;
-        }
+    .topbar {
+        height: 85px;
+    }
 
-        .submenu-item.selected {
+    .hamburger {
+        width: 70px;
+        height: 85px;
+    }
 
-            background: #45589c;
+    .hamburger-lines {
+        width: 25px;
+    }
 
-            color: white;
-        }
+    .hamburger-lines span {
+        height: 2.5px;
+        margin: 5px 0;
+    }
 
+    .logo-area {
+        width: 245px;
+    }
 
-        /* =========================================================
-           MAIN
-        ========================================================= */
+    .logo-area img {
+        width: 145px;
+    }
 
-        .main {
+    .header-icons {
+        gap: 25px;
+        padding-right: 18px;
+    }
 
-            margin-left: 310px;
+    .header-icon {
+        width: 25px;
+        height: 25px;
+    }
 
-            padding-top: 85px;
+    .user-dp {
+        width: 46px;
+        height: 46px;
+        margin-right: 18px;
+    }
 
-            min-height: 100vh;
-        }
+}
 
-        .content {
 
-            padding: 32px 38px 0;
-        }
+/* =========================================================
+   SIDEBAR
+========================================================= */
 
+.sidebar {
 
-        /* =========================================================
-           QUICK LINKS
-        ========================================================= */
+    position: fixed;
 
-        .quick-links {
+    top: 85px;
 
-            display: grid;
+    left: 0;
 
-            grid-template-columns:
-                repeat(5, minmax(0, 1fr));
+    bottom: 0;
 
-            gap: 22px;
+    width: 310px;
 
-            margin-bottom: 27px;
-        }
+    background: white;
 
-        .quick-card {
+    border-right: 1px solid #ddd;
 
-            height: 110px;
+    overflow-y: auto;
 
-            background: white;
+    z-index: 900;
+}
 
-            border-radius: 14px;
+.sidebar-item {
 
-            padding: 22px 24px;
+    min-height: 51px;
 
-            display: flex;
+    padding: 0 18px;
 
-            align-items: center;
+    display: flex;
 
-            justify-content: space-between;
+    align-items: center;
 
-            box-shadow:
-                0 3px 14px
-                rgba(30,50,90,.05);
-        }
+    justify-content: space-between;
 
-        .quick-text {
-            min-width: 0;
-        }
+    color: #173d72;
 
-        .quick-card h3 {
+    font-size: 17px;
 
-            color: #27477f;
+    line-height: 20px;
 
-            font-size: 19px;
+    cursor: pointer;
+}
 
-            line-height: 22px;
+.sidebar-item:hover {
+    background: #f4f5f9;
+}
 
-            margin-bottom: 15px;
+.sidebar-item.active {
 
-            white-space: nowrap;
-        }
+    color: white;
 
-        .quick-card a {
+    background: #45589c;
+}
 
-            color: #111;
+.sidebar-arrow {
 
-            font-size: 14px;
+    color: #1b4c89;
 
-            text-decoration: none;
+    font-size: 22px;
+}
 
-            border-bottom: 1px solid #aaa;
+.sidebar-item.active .sidebar-arrow {
+    color: white;
+}
 
-            padding-bottom: 5px;
-        }
+.hostel-submenu {
+    display: none;
+}
 
+.hostel-submenu.open {
+    display: block;
+}
 
-        /* Quick card icons */
+.submenu-item {
 
-        .quick-icon {
+    height: 43px;
 
-            width: 48px;
-            height: 48px;
+    padding-left: 38px;
 
-            border-radius: 8px;
+    display: flex;
 
-            background: #e8f5ff;
+    align-items: center;
 
-            display: flex;
+    color: #173d72;
 
-            align-items: center;
-            justify-content: center;
+    font-size: 16px;
 
-            flex-shrink: 0;
+    cursor: pointer;
+}
 
-            margin-left: 12px;
-        }
+.submenu-item.selected {
 
-        .quick-icon svg {
+    background: #45589c;
 
-            width: 29px;
-            height: 29px;
-        }
+    color: white;
+}
 
 
-        /* LMS */
+/* =========================================================
+   MAIN
+========================================================= */
 
-        .quick-card.lms {
+.main {
 
-            background: #285b87;
+    margin-left: 310px;
 
-            border: 2px solid #00ed5e;
-        }
+    padding-top: 85px;
 
-        .quick-card.lms h3,
-        .quick-card.lms a {
-            color: white;
-        }
+    min-height: 100vh;
+}
 
-        .quick-card.lms .quick-icon {
+.content {
 
-            background: transparent;
-        }
+    padding: 32px 38px 0;
+}
 
-        .quick-card.lms .quick-icon svg {
 
-            width: 38px;
-            height: 38px;
+/* =========================================================
+   QUICK LINKS
+========================================================= */
 
-            color: white;
-        }
+.quick-links {
 
+    display: grid;
 
-        /* =========================================================
-           TITLE
-        ========================================================= */
+    grid-template-columns:
+        repeat(5, minmax(0,1fr));
 
-        .page-title {
+    gap: 22px;
 
-            height: 57px;
+    margin-bottom: 27px;
+}
 
-            background: #4559a7;
+.quick-card {
 
-            border-radius: 12px;
+    height: 110px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    background: white;
 
-            color: white;
+    border-radius: 14px;
 
-            font-size: 22px;
+    padding: 22px 24px;
 
-            font-weight: bold;
+    display: flex;
 
-            margin-bottom: 25px;
-        }
+    align-items: center;
 
+    justify-content: space-between;
 
-        /* =========================================================
-           WARNING
-        ========================================================= */
+    box-shadow:
+        0 3px 14px
+        rgba(30,50,90,.05);
+}
 
-        .warning {
+.quick-card h3 {
 
-            color: red;
+    color: #27477f;
 
-            text-align: center;
+    font-size: 19px;
 
-            font-size: 16px;
+    line-height: 22px;
 
-            margin-bottom: 20px;
-        }
+    margin-bottom: 15px;
+}
 
+.quick-card a {
 
-        /* =========================================================
-           FORM
-        ========================================================= */
+    color: #111;
 
-        .form-row {
+    text-decoration: none;
 
-            display: grid;
+    font-size: 14px;
 
-            grid-template-columns:
-                155px
-                minmax(0,1fr)
-                215px
-                minmax(0,1fr);
+    border-bottom: 1px solid #aaa;
 
-            align-items: center;
+    padding-bottom: 5px;
+}
 
-            column-gap: 20px;
+.quick-icon {
 
-            margin-bottom: 29px;
-        }
+    width: 48px;
 
-        .form-row.single {
+    height: 48px;
 
-            grid-template-columns:
-                215px
-                minmax(0,1fr);
-        }
+    border-radius: 8px;
 
-        .form-label {
+    background: #e8f5ff;
 
-            font-size: 16px;
+    display: flex;
 
-            font-weight: bold;
+    align-items: center;
 
-            line-height: 22px;
-        }
+    justify-content: center;
 
-        .field-help {
+    flex-shrink: 0;
+}
 
-            font-size: 13px;
+.quick-icon svg {
 
-            font-weight: bold;
-        }
+    width: 28px;
 
-        select,
-        input[type="date"],
-        input[type="text"] {
+    height: 28px;
+}
 
-            width: 100%;
+.quick-card.lms {
 
-            height: 44px;
+    background: #285b87;
 
-            border: 1px solid #cccccc;
+    border: 2px solid #00ec5d;
+}
 
-            border-radius: 5px;
+.quick-card.lms h3,
+.quick-card.lms a {
+    color: white;
+}
 
-            background: white;
+.quick-card.lms .quick-icon {
 
-            padding: 0 16px;
+    background: transparent;
 
-            color: #555;
+    color: white;
+}
 
-            font-size: 16px;
 
-            outline: none;
-        }
+/* =========================================================
+   TITLE
+========================================================= */
 
-        select:focus,
-        input:focus {
+.page-title {
 
-            border-color: #536aa6;
+    height: 57px;
 
-            box-shadow:
-                0 0 0 1px
-                rgba(83,106,166,.15);
-        }
+    border-radius: 11px;
 
-        #totalDays {
-            background: #eeeeee;
-        }
+    background: #4559a7;
 
-        #purpose {
-            height: 65px;
-        }
+    display: flex;
 
+    align-items: center;
 
-        /* Time */
+    justify-content: center;
 
-        .time-field {
-            position: relative;
-        }
+    color: white;
 
-        .time-field input {
+    font-size: 22px;
 
-            width: 100%;
+    font-weight: bold;
 
-            height: 44px;
+    margin-bottom: 25px;
+}
 
-            border: 1px solid #cccccc;
 
-            border-radius: 5px;
+/* =========================================================
+   WARNING
+========================================================= */
 
-            padding: 0 16px;
+.warning {
 
-            color: #555;
+    text-align: center;
 
-            font-size: 16px;
-        }
+    color: red;
 
-        .clock {
+    font-size: 16px;
 
-            position: absolute;
+    margin-bottom: 20px;
+}
 
-            right: 17px;
 
-            top: 50%;
+/* =========================================================
+   FORM - DESKTOP
+========================================================= */
 
-            transform: translateY(-50%);
+.form-row {
 
-            width: 17px;
-            height: 17px;
+    display: grid;
 
-            color: #333;
-        }
+    grid-template-columns:
+        155px
+        minmax(0,1fr)
+        215px
+        minmax(0,1fr);
 
+    align-items: center;
 
-        /* =========================================================
-           CONFIRMATION
-        ========================================================= */
+    column-gap: 20px;
 
-        .confirmation {
+    margin-bottom: 29px;
+}
 
-            display: flex;
+.form-row.single {
 
-            align-items: flex-start;
+    grid-template-columns:
+        215px
+        minmax(0,1fr);
+}
 
-            gap: 7px;
+.form-label {
 
-            font-size: 16px;
+    font-size: 16px;
 
-            font-weight: bold;
+    font-weight: bold;
 
-            line-height: 24px;
-        }
+    line-height: 22px;
+}
 
-        .confirmation input {
+.field-help {
+    font-size: 13px;
+}
 
-            width: 16px;
-            height: 16px;
+select,
+input[type="date"],
+input[type="text"] {
 
-            margin-top: 3px;
+    width: 100%;
 
-            flex-shrink: 0;
-        }
+    height: 44px;
 
+    border: 1px solid #ccc;
 
-        /* =========================================================
-           BUTTONS
-        ========================================================= */
+    border-radius: 5px;
 
-        .buttons {
+    background: white;
 
-            display: flex;
+    padding: 0 16px;
 
-            justify-content: center;
+    color: #555;
 
-            gap: 5px;
+    font-size: 16px;
 
-            margin-top: 20px;
-        }
+    outline: none;
+}
 
-        .btn {
+#totalDays {
+    background: #eee;
+}
 
-            border: 0;
+#purpose {
+    height: 65px;
+}
 
-            background: #ed1717;
 
-            color: white;
+/* =========================================================
+   TIME
+========================================================= */
 
-            padding: 11px 20px;
+.time-field {
+    position: relative;
+}
 
-            border-radius: 5px;
+.time-field input {
+    padding-right: 35px;
+}
 
-            font-size: 14px;
+.clock {
 
-            font-weight: bold;
+    position: absolute;
 
-            cursor: pointer;
-        }
+    right: 13px;
 
-        .btn:hover {
-            background: #cc0000;
-        }
+    top: 50%;
 
+    transform: translateY(-50%);
 
-        /* =========================================================
-           HELP BUTTON
-        ========================================================= */
+    width: 16px;
 
-        .help {
+    height: 16px;
 
-            position: fixed;
+    color: #333;
+}
 
-            right: 22px;
 
-            bottom: 25px;
+/* =========================================================
+   CONFIRMATION
+========================================================= */
 
-            width: 57px;
-            height: 57px;
+.confirmation {
 
-            border-radius: 50%;
+    display: flex;
 
-            background: #70201e;
+    align-items: flex-start;
 
-            color: white;
+    gap: 7px;
 
-            border: 3px solid white;
+    font-size: 16px;
 
-            box-shadow:
-                0 0 0 1px #ddd;
+    font-weight: bold;
 
-            display: flex;
+    line-height: 24px;
+}
 
-            align-items: center;
-            justify-content: center;
+.confirmation input {
 
-            font-size: 36px;
+    width: 16px;
 
-            font-weight: bold;
+    height: 16px;
 
-            z-index: 1100;
-        }
+    margin-top: 3px;
 
+    flex-shrink: 0;
+}
 
-        /* =========================================================
-           PREVIOUS LEAVE
-        ========================================================= */
 
-        .previous {
+/* =========================================================
+   BUTTONS
+========================================================= */
 
-            margin-top: 18px;
-        }
+.buttons {
 
-        .previous-title {
+    display: flex;
 
-            font-size: 36px;
+    justify-content: center;
 
-            font-weight: normal;
+    gap: 5px;
 
-            color: #222;
+    margin-top: 20px;
+}
 
-            padding-bottom: 21px;
+.btn {
 
-            border-bottom: 1px solid #ddd;
+    border: none;
 
-            margin-bottom: 0;
-        }
+    background: #ed1717;
 
+    color: white;
 
-        /* Desktop table */
+    padding: 11px 20px;
 
-        .desktop-table {
+    border-radius: 5px;
 
-            width: 100%;
+    font-size: 14px;
 
-            border-collapse: collapse;
+    font-weight: bold;
 
-            background: white;
+    cursor: pointer;
+}
 
-            font-size: 14px;
-        }
 
-        .desktop-table th {
+/* =========================================================
+   HELP BUTTON
+========================================================= */
 
-            background: #eeeeee;
+.help {
 
-            text-align: left;
+    position: fixed;
 
-            padding: 8px 10px;
+    right: 20px;
 
-            border: 1px solid #d4d4d4;
+    bottom: 22px;
 
-            font-size: 14px;
-        }
+    width: 57px;
 
-        .desktop-table td {
+    height: 57px;
 
-            padding: 8px 10px;
+    border-radius: 50%;
 
-            border: 1px solid #d4d4d4;
+    background: #70201e;
 
-            line-height: 18px;
+    border: 3px solid white;
 
-            vertical-align: middle;
-        }
+    box-shadow:
+        0 0 0 1px #ddd;
 
-        .remark {
-            color: #0000ee;
-        }
+    color: white;
 
+    font-size: 36px;
 
-        /* =========================================================
-           MOBILE RECORDS
-        ========================================================= */
+    font-weight: bold;
 
-        .mobile-records {
-            display: none;
-        }
+    display: flex;
 
+    align-items: center;
 
-        /* =========================================================
-           FOOTER
-        ========================================================= */
+    justify-content: center;
 
-        .footer {
+    z-index: 1100;
+}
 
-            min-height: 55px;
 
-            margin-top: 35px;
+/* =========================================================
+   PREVIOUS LEAVE
+========================================================= */
 
-            background: #293f56;
+.previous {
+    margin-top: 18px;
+}
 
-            color: white;
+.previous-title {
 
-            display: flex;
+    font-size: 36px;
 
-            align-items: center;
-            justify-content: center;
+    font-weight: normal;
 
-            gap: 12px;
+    padding-bottom: 21px;
 
-            padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
 
-            font-size: 15px;
 
-            font-weight: bold;
+/* Desktop table */
 
-            position: relative;
-        }
+.desktop-table {
 
-        .footer-contact {
-            font-weight: normal;
-        }
+    width: 100%;
 
-        .bug {
+    border-collapse: collapse;
 
-            position: absolute;
+    background: white;
 
-            right: 16px;
+    font-size: 14px;
+}
 
-            color: red;
+.desktop-table th {
 
-            font-weight: bold;
-        }
+    background: #eee;
 
+    text-align: left;
 
-        /* =========================================================
-           TABLET
-        ========================================================= */
+    padding: 8px 10px;
 
-        @media (max-width: 1250px) {
+    border: 1px solid #d4d4d4;
+}
 
-            .quick-links {
+.desktop-table td {
 
-                grid-template-columns:
-                    repeat(3,1fr);
-            }
+    padding: 8px 10px;
 
-            .form-row {
+    border: 1px solid #d4d4d4;
 
-                grid-template-columns:
-                    150px
-                    minmax(0,1fr)
-                    190px
-                    minmax(0,1fr);
-            }
+    line-height: 18px;
+}
 
-            .help {
-                display: none;
-            }
+.remark {
+    color: #0000ee;
+}
 
-        }
 
+/* =========================================================
+   MOBILE RECORDS
+========================================================= */
 
-        /* =========================================================
-           MOBILE
-        ========================================================= */
+.mobile-records {
+    display: none;
+}
 
-        @media (max-width: 768px) {
 
+/* =========================================================
+   FOOTER
+========================================================= */
 
-            /* -----------------------------------------------------
-               HEADER
-            ----------------------------------------------------- */
+.footer {
 
-            .topbar {
+    min-height: 55px;
 
-                height: 45px;
+    margin-top: 35px;
 
-                box-shadow:
-                    0 1px 3px
-                    rgba(0,0,0,.12);
-            }
+    background: #293f56;
 
-            .hamburger {
+    color: white;
 
-                width: 31px;
+    display: flex;
 
-                height: 45px;
-            }
+    align-items: center;
 
-            .hamburger-lines {
-                width: 18px;
-            }
+    justify-content: center;
 
-            .hamburger-lines span {
+    gap: 11px;
 
-                height: 2px;
+    padding: 10px 20px;
 
-                margin: 3px 0;
-            }
+    font-size: 15px;
 
+    font-weight: bold;
 
-            .logo-area {
+    position: relative;
+}
 
-                width: 76px;
+.footer-contact {
+    font-weight: normal;
+}
 
-                padding-left: 0;
-            }
+.report-bug {
 
-            .logo-area img {
+    position: absolute;
 
-                width: 72px;
+    right: 15px;
 
-                max-height: 32px;
+    color: red;
 
-                object-fit: contain;
-            }
+    font-weight: bold;
+}
 
 
-            .search-box {
-                display: none;
-            }
+/* =========================================================
+   MOBILE
+========================================================= */
 
+@media (max-width: 768px) {
 
-            .header-icons {
 
-                margin-left: auto;
+    /* ---------------------------------------------------------
+       BODY
+    --------------------------------------------------------- */
 
-                gap: 9px;
+    body {
+        background: #f4f4fa;
+    }
 
-                padding: 0 6px;
-            }
 
-            .header-icon {
+    /* ---------------------------------------------------------
+       HEADER
+    --------------------------------------------------------- */
 
-                width: 14px;
-                height: 14px;
-            }
+    .topbar {
 
+        height: 45px;
 
-            .profile-box {
+        position: fixed;
+    }
 
-                width: 32px;
+    .hamburger {
 
-                height: 45px;
+        width: 30px;
 
-                border-left: none;
+        height: 45px;
+    }
 
-                padding: 0;
+    .hamburger-lines {
+        width: 17px;
+    }
 
-                justify-content: center;
-            }
+    .hamburger-lines span {
 
-            .profile-details {
-                display: none;
-            }
+        height: 2px;
 
-            .profile-image {
+        margin: 3px 0;
+    }
 
-                width: 27px;
-                height: 27px;
+    .logo-area {
 
-                font-size: 12px;
-            }
+        width: 73px;
+    }
 
+    .logo-area img {
 
-            /* -----------------------------------------------------
-               SIDEBAR
-            ----------------------------------------------------- */
+        width: 65px;
+    }
 
-            .sidebar {
-                display: none;
-            }
+    .header-icons {
 
+        gap: 8px;
 
-            /* -----------------------------------------------------
-               MAIN
-            ----------------------------------------------------- */
+        padding-right: 7px;
+    }
 
-            .main {
+    .header-icon {
 
-                margin-left: 0;
+        width: 13px;
 
-                padding-top: 45px;
-            }
+        height: 13px;
+    }
 
-            .content {
+    .user-dp {
 
-                padding:
+        width: 28px;
 
-                    7px
+        height: 28px;
 
-                    5px
+        margin-right: 4px;
+    }
 
-                    0;
-            }
 
+    /* ---------------------------------------------------------
+       SIDEBAR
+    --------------------------------------------------------- */
 
-            /* -----------------------------------------------------
-               QUICK LINKS
-            ----------------------------------------------------- */
+    .sidebar {
+        display: none;
+    }
 
-            .quick-links {
 
-                display: grid;
+    /* ---------------------------------------------------------
+       MAIN
+    --------------------------------------------------------- */
 
-                grid-template-columns:
-                    1fr 1fr;
+    .main {
 
-                gap: 4px;
+        margin-left: 0;
 
-                margin-bottom: 7px;
-            }
+        padding-top: 45px;
+    }
 
-            .quick-card {
+    .content {
 
-                height: 76px;
+        width: 100%;
 
-                min-height: 76px;
+        padding:
 
-                border-radius: 4px;
+            7px
 
-                padding: 9px 8px;
-            }
+            5px
 
-            .quick-card h3 {
+            0;
+    }
 
-                font-size: 9px;
 
-                line-height: 11px;
+    /* ---------------------------------------------------------
+       QUICK LINKS
+    --------------------------------------------------------- */
 
-                margin-bottom: 8px;
+    .quick-links {
 
-                white-space: normal;
-            }
+        display: grid;
 
-            .quick-card a {
+        grid-template-columns:
+            1fr 1fr;
 
-                font-size: 6.7px;
+        gap: 4px;
 
-                padding-bottom: 2px;
-            }
+        margin-bottom: 7px;
+    }
 
-            .quick-icon {
+    .quick-card {
 
-                width: 27px;
-                height: 27px;
+        height: 66px;
 
-                border-radius: 5px;
+        min-height: 66px;
 
-                margin-left: 5px;
-            }
+        border-radius: 4px;
 
-            .quick-icon svg {
+        padding: 7px 7px;
+    }
 
-                width: 17px;
-                height: 17px;
-            }
+    .quick-card h3 {
 
-            .quick-card.lms .quick-icon svg {
+        font-size: 8.5px;
 
-                width: 22px;
-                height: 22px;
-            }
+        line-height: 10px;
 
+        margin-bottom: 7px;
+    }
 
-            /* -----------------------------------------------------
-               TITLE
-            ----------------------------------------------------- */
+    .quick-card a {
 
-            .page-title {
+        font-size: 6px;
 
-                height: 27px;
+        padding-bottom: 2px;
+    }
 
-                border-radius: 4px;
+    .quick-icon {
 
-                font-size: 9px;
+        width: 24px;
 
-                margin-bottom: 12px;
-            }
+        height: 24px;
 
+        border-radius: 4px;
+    }
 
-            /* -----------------------------------------------------
-               WARNING
-            ----------------------------------------------------- */
+    .quick-icon svg {
 
-            .warning {
+        width: 16px;
 
-                font-size: 7px;
+        height: 16px;
+    }
 
-                line-height: 10px;
+    .quick-card.lms .quick-icon svg {
 
-                margin:
+        width: 21px;
 
-                    0
+        height: 21px;
+    }
 
-                    25px
 
-                    10px;
-            }
+    /* ---------------------------------------------------------
+       TITLE
+    --------------------------------------------------------- */
 
+    .page-title {
 
-            /* -----------------------------------------------------
-               FORM
-            ----------------------------------------------------- */
+        height: 26px;
 
-            .form-row,
-            .form-row.single {
+        border-radius: 4px;
 
-                display: block;
+        font-size: 8.5px;
 
-                margin-bottom: 11px;
-            }
+        margin-bottom: 11px;
+    }
 
-            .form-label {
 
-                display: block;
+    /* ---------------------------------------------------------
+       WARNING
+    --------------------------------------------------------- */
 
-                font-size: 8px;
+    .warning {
 
-                line-height: 10px;
+        font-size: 6px;
 
-                margin-bottom: 4px;
-            }
+        line-height: 8px;
 
-            .field-help {
+        margin:
 
-                font-size: 7px;
-            }
+            0
 
-            select,
-            input[type="date"],
-            input[type="text"] {
+            0
 
-                height: 30px;
+            9px;
+    }
 
-                border-radius: 2px;
 
-                padding: 0 8px;
+    /* ---------------------------------------------------------
+       FORM
+    --------------------------------------------------------- */
 
-                font-size: 8px;
-            }
+    .form-row,
+    .form-row.single {
 
-            #purpose {
-                height: 30px;
-            }
+        display: block;
 
+        margin-bottom: 9px;
+    }
 
-            /* Time */
+    .form-label {
 
-            .time-field {
+        display: block;
 
-                margin-bottom: 11px;
-            }
+        font-size: 7px;
 
-            .time-field input {
+        line-height: 9px;
 
-                height: 30px;
+        margin-bottom: 3px;
+    }
 
-                border-radius: 2px;
+    .field-help {
 
-                padding: 0 8px;
+        font-size: 6px;
+    }
 
-                font-size: 8px;
-            }
+    select,
+    input[type="date"],
+    input[type="text"] {
 
-            .clock {
+        width: 100%;
 
-                right: 8px;
+        height: 27px;
 
-                width: 11px;
-                height: 11px;
-            }
+        border-radius: 2px;
 
+        padding: 0 7px;
 
-            /* Confirmation */
+        font-size: 7px;
+    }
 
-            .confirmation {
+    #purpose {
 
-                gap: 4px;
+        height: 27px;
+    }
 
-                font-size: 7px;
 
-                line-height: 9px;
+    /* ---------------------------------------------------------
+       TIME
+    --------------------------------------------------------- */
 
-                margin-top: 1px;
-            }
+    .time-field {
 
-            .confirmation input {
+        margin-bottom: 9px;
+    }
 
-                width: 10px;
-                height: 10px;
+    .time-field input {
 
-                margin-top: 0;
-            }
+        height: 27px;
 
+        padding-right: 27px;
 
-            /* Buttons */
+        font-size: 7px;
+    }
 
-            .buttons {
+    .clock {
 
-                margin-top: 9px;
+        width: 10px;
 
-                gap: 3px;
-            }
+        height: 10px;
 
-            .btn {
+        right: 7px;
+    }
 
-                padding: 5px 10px;
 
-                border-radius: 2px;
+    /* ---------------------------------------------------------
+       CONFIRMATION
+    --------------------------------------------------------- */
 
-                font-size: 7px;
-            }
+    .confirmation {
 
+        gap: 3px;
 
-            /* -----------------------------------------------------
-               HELP
-            ----------------------------------------------------- */
+        font-size: 6px;
 
-            .help {
+        line-height: 8px;
 
-                right: 6px;
+        margin-top: 1px;
+    }
 
-                bottom: 6px;
+    .confirmation input {
 
-                width: 29px;
-                height: 29px;
+        width: 9px;
 
-                font-size: 19px;
+        height: 9px;
 
-                border-width: 2px;
-            }
+        margin-top: 0;
+    }
 
 
-            /* -----------------------------------------------------
-               PREVIOUS
-            ----------------------------------------------------- */
+    /* ---------------------------------------------------------
+       BUTTONS
+    --------------------------------------------------------- */
 
-            .previous {
+    .buttons {
 
-                margin-top: 7px;
-            }
+        margin-top: 8px;
 
-            .previous-title {
+        gap: 3px;
+    }
 
-                font-size: 18px;
+    .btn {
 
-                padding-bottom: 6px;
+        padding: 5px 9px;
 
-                border-bottom: 0;
+        border-radius: 2px;
 
-                margin-bottom: 4px;
-            }
+        font-size: 6.5px;
+    }
 
 
-            /* Hide desktop table */
+    /* ---------------------------------------------------------
+       HELP
+    --------------------------------------------------------- */
 
-            .desktop-table {
-                display: none;
-            }
+    .help {
 
+        width: 27px;
 
-            /* Mobile records */
+        height: 27px;
 
-            .mobile-records {
-                display: block;
-            }
+        right: 6px;
 
-            .record {
+        bottom: 6px;
 
-                background: white;
+        border-width: 2px;
 
-                border: 1px solid #dedede;
+        font-size: 17px;
+    }
 
-                margin-bottom: 2px;
 
-                padding: 4px 5px;
+    /* ---------------------------------------------------------
+       PREVIOUS LEAVE
+    --------------------------------------------------------- */
 
-                font-size: 6.5px;
+    .previous {
 
-                line-height: 9px;
-            }
+        margin-top: 7px;
+    }
 
-            .record-row {
+    .previous-title {
 
-                display: grid;
+        font-size: 17px;
 
-                grid-template-columns:
-                    47px
-                    minmax(0,1fr);
+        padding-bottom: 5px;
 
-                min-height: 13px;
+        border-bottom: none;
 
-                align-items: center;
+        margin-bottom: 3px;
+    }
 
-                border-bottom: 1px solid #ededed;
-            }
 
-            .record-row:last-child {
-                border-bottom: none;
-            }
+    /* Hide table */
 
-            .record-label {
+    .desktop-table {
+        display: none;
+    }
 
-                font-weight: bold;
 
-                color: #111;
-            }
+    /* Mobile records */
 
-            .record-value {
+    .mobile-records {
 
-                color: #222;
+        display: block;
+    }
 
-                word-break: normal;
-            }
+    .record {
 
-            .record-value.remark {
+        background: white;
 
-                color: #0000ee;
+        border:
 
-                line-height: 9px;
-            }
+            1px solid
 
+            #dddddd;
 
-            /* -----------------------------------------------------
-               FOOTER
-            ----------------------------------------------------- */
+        margin-bottom: 2px;
 
-            .footer {
+        padding: 3px 4px;
 
-                min-height: 44px;
+        font-size: 5.5px;
 
-                margin-top: 10px;
+        line-height: 7.5px;
+    }
 
-                padding:
+    .record-row {
 
-                    6px
+        display: grid;
 
-                    35px
+        grid-template-columns:
+            45px
+            minmax(0,1fr);
 
-                    6px
+        min-height: 12px;
 
-                    7px;
+        align-items: center;
 
-                display: block;
+        border-bottom:
+            1px solid
+            #eeeeee;
+    }
 
-                text-align: center;
+    .record-row:last-child {
 
-                font-size: 6px;
+        border-bottom: none;
+    }
 
-                line-height: 9px;
-            }
+    .record-label {
 
-            .footer-contact {
+        font-weight: bold;
 
-                font-size: 6px;
-            }
+        color: #111;
+    }
 
-            .bug {
+    .record-value {
 
-                right: 5px;
+        color: #222;
 
-                bottom: 5px;
+        word-break: normal;
+    }
 
-                width: 22px;
-                height: 22px;
+    .record-value.remark {
 
-                border-radius: 50%;
+        color: #0000ee;
 
-                background: #70201e;
+        line-height: 7.5px;
+    }
 
-                color: white;
 
-                font-size: 0;
+    /* ---------------------------------------------------------
+       FOOTER
+    --------------------------------------------------------- */
 
-                display: flex;
+    .footer {
 
-                align-items: center;
-                justify-content: center;
-            }
+        min-height: 41px;
 
-            .bug::after {
+        margin-top: 9px;
 
-                content: "?";
+        padding:
 
-                font-size: 14px;
+            5px
 
-                font-weight: bold;
-            }
+            32px
 
-        }
+            5px
 
+            5px;
 
-        /* =========================================================
-           VERY SMALL PHONE
-        ========================================================= */
+        display: block;
 
-        @media (max-width: 360px) {
+        text-align: center;
 
-            .quick-card {
+        font-size: 5.5px;
 
-                height: 73px;
+        line-height: 8px;
+    }
 
-                min-height: 73px;
-            }
+    .footer-contact {
 
-            .quick-card h3 {
-                font-size: 8.5px;
-            }
+        font-size: 5.5px;
+    }
 
-            .quick-card a {
-                font-size: 6.3px;
-            }
+    .report-bug {
 
-            .form-label {
-                font-size: 7.5px;
-            }
+        right: 4px;
 
-            select,
-            input[type="date"],
-            input[type="text"] {
-                font-size: 7.5px;
-            }
+        bottom: 4px;
 
-            .confirmation {
-                font-size: 6.5px;
-            }
+        width: 20px;
 
-        }
+        height: 20px;
 
-    </style>
+        border-radius: 50%;
+
+        background: #70201e;
+
+        color: white;
+
+        font-size: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+    .report-bug::after {
+
+        content: "?";
+
+        font-size: 12px;
+
+        font-weight: bold;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .quick-card {
+
+        height: 63px;
+
+        min-height: 63px;
+    }
+
+    .quick-card h3 {
+        font-size: 8px;
+    }
+
+    .quick-card a {
+        font-size: 5.7px;
+    }
+
+    .form-label {
+        font-size: 6.7px;
+    }
+
+    select,
+    input[type="date"],
+    input[type="text"] {
+        font-size: 6.7px;
+    }
+
+    .record {
+        font-size: 5.2px;
+    }
+
+}
+
+</style>
 
 </head>
+
 
 
 <body>
 
 
-<!-- =============================================================
+<!-- =========================================================
+     PERSON SELECTION
+========================================================= -->
+
+<div id="personScreen">
+
+    <div class="person-box">
+
+        <img
+            class="person-logo"
+            src="https://uims.cuchd.in/img/cuimslogo.png"
+            alt="CU IMS"
+        >
+
+        <div class="person-title">
+            CU IMS
+        </div>
+
+        <div class="person-subtitle">
+            Select the student profile to continue
+        </div>
+
+        <select
+            id="personSelect"
+            class="person-select"
+        >
+
+            <option value="">
+                Select Student
+            </option>
+
+            <option value="subhayu">
+                Subhayu
+            </option>
+
+            <option value="nankul">
+                Nankul
+            </option>
+
+        </select>
+
+
+        <button
+            class="enter-button"
+            onclick="enterIMS()"
+        >
+            CONTINUE
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
      HEADER
-============================================================= -->
+========================================================= -->
 
 <header class="topbar">
 
 
     <!-- Hamburger -->
 
-    <div
-        class="hamburger"
-        onclick="toggleSidebar()"
-    >
+    <div class="hamburger">
 
         <div class="hamburger-lines">
 
@@ -1511,7 +1598,7 @@
     </div>
 
 
-    <!-- CU IMS -->
+    <!-- CU IMS LOGO -->
 
     <div class="logo-area">
 
@@ -1523,63 +1610,9 @@
     </div>
 
 
-    <!-- Search -->
-
-    <div class="search-box">
-
-        <span class="search-text">
-            Search &amp; Bookmark your page
-        </span>
-
-
-        <svg
-            class="search-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.3"
-        >
-
-            <circle
-                cx="11"
-                cy="11"
-                r="7"
-            ></circle>
-
-            <line
-                x1="16.5"
-                y1="16.5"
-                x2="21"
-                y2="21"
-            ></line>
-
-        </svg>
-
-    </div>
-
-
     <!-- Header icons -->
 
     <div class="header-icons">
-
-
-        <!-- Bell -->
-
-        <svg
-            class="header-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-        >
-
-            <path
-                d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
-            ></path>
-
-            <path d="M10 21h4"></path>
-
-        </svg>
 
 
         <!-- Book -->
@@ -1589,14 +1622,37 @@
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.7"
+            stroke-width="1.6"
         >
 
             <path
                 d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"
             ></path>
 
-            <path d="M4 5.5V20"></path>
+            <path
+                d="M4 5.5V20"
+            ></path>
+
+        </svg>
+
+
+        <!-- Bell -->
+
+        <svg
+            class="header-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+        >
+
+            <path
+                d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+            ></path>
+
+            <path
+                d="M10 21h4"
+            ></path>
 
         </svg>
 
@@ -1608,119 +1664,41 @@
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.7"
+            stroke-width="1.6"
         >
-
-            <path d="M3 10.5 12 3l9 7.5"></path>
-
-            <path d="M5 9.5V21h14V9.5"></path>
-
-            <path d="M9 21v-6h6v6"></path>
-
-        </svg>
-
-
-        <!-- Settings -->
-
-        <svg
-            class="header-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-        >
-
-            <circle
-                cx="12"
-                cy="12"
-                r="3"
-            ></circle>
 
             <path
-                d="
-                M19.4 15
-                a1.7 1.7 0 0 0 .3 1.9
-                l.1.1
-                -1.8 1.8
-                -.1-.1
-                a1.7 1.7 0 0 0-1.9-.3
-                1.7 1.7 0 0 0-1 1.6
-                V20
-                h-2.6
-                v-.1
-                a1.7 1.7 0 0 0-1-1.6
-                1.7 1.7 0 0 0-1.9.3
-                l-.1.1
-                -1.8-1.8
-                .1-.1
-                A1.7 1.7 0 0 0 8 15
-                1.7 1.7 0 0 0 6.4 14
-                H6
-                v-2.6
-                h.4
-                A1.7 1.7 0 0 0 8 10.4
-                a1.7 1.7 0 0 0-.3-1.9
-                l-.1-.1
-                1.8-1.8
-                .1.1
-                a1.7 1.7 0 0 0 1.9.3
-                1.7 1.7 0 0 0 1-1.6
-                V5
-                h2.6
-                v.4
-                a1.7 1.7 0 0 0 1 1.6
-                1.7 1.7 0 0 0 1.9-.3
-                l.1-.1
-                1.8 1.8
-                -.1.1
-                a1.7 1.7 0 0 0-.3 1.9
-                1.7 1.7 0 0 0 1.6 1
-                h.4
-                V14
-                h-.4
-                a1.7 1.7 0 0 0-1.6 1Z"
+                d="M3 10.5 12 3l9 7.5"
+            ></path>
+
+            <path
+                d="M5 9.5V21h14V9.5"
             ></path>
 
         </svg>
 
-    </div>
-
-
-    <!-- Profile -->
-
-    <div class="profile-box">
-
-        <div>
-
-            <div class="profile-name">
-                SUBHAYU
-            </div>
-
-            <div class="profile-id">
-                23BAD10022
-            </div>
-
-        </div>
-
-
-        <div class="profile-image">
-            👨🏻
-        </div>
 
     </div>
+
+
+    <!-- ONLY DP -->
+
+    <img
+        id="userDP"
+        class="user-dp"
+        src=""
+        alt="Student"
+    >
 
 </header>
 
 
 
-<!-- =============================================================
+<!-- =========================================================
      SIDEBAR
-============================================================= -->
+========================================================= -->
 
-<aside
-    class="sidebar"
-    id="sidebar"
->
+<aside class="sidebar">
 
 
     <div class="sidebar-item">
@@ -1757,13 +1735,20 @@
 
 
     <div class="sidebar-item">
-        <span>Centre For Student Wellbeing (CSW)</span>
-        <span class="sidebar-arrow">›</span>
+        <span>
+            Centre For Student Wellbeing (CSW)
+        </span>
+
+        <span class="sidebar-arrow">
+            ›
+        </span>
     </div>
 
 
     <div class="sidebar-item">
-        <span>Counseling Therapy Clinic Registration</span>
+        <span>
+            Counseling Therapy Clinic Registration
+        </span>
     </div>
 
 
@@ -1790,8 +1775,6 @@
     </div>
 
 
-    <!-- HOSTEL -->
-
     <div
         class="sidebar-item active"
         onclick="toggleHostel()"
@@ -1814,10 +1797,7 @@
         id="hostelMenu"
     >
 
-        <div
-            class="submenu-item selected"
-            onclick="showHostelLeave(event)"
-        >
+        <div class="submenu-item selected">
             Hostel Leave
         </div>
 
@@ -1884,8 +1864,13 @@
 
 
     <div class="sidebar-item">
-        <span>Student Relation Management System</span>
-        <span class="sidebar-arrow">›</span>
+        <span>
+            Student Relation Management System
+        </span>
+
+        <span class="sidebar-arrow">
+            ›
+        </span>
     </div>
 
 
@@ -1914,1140 +1899,603 @@
 
 
 
-<!-- =============================================================
+<!-- =========================================================
      MAIN
-============================================================= -->
+========================================================= -->
 
 <main class="main">
 
 
-    <div class="content">
+<div class="content">
 
 
-        <!-- =====================================================
-             QUICK LINKS
-        ====================================================== -->
+<!-- =========================================================
+     QUICK LINKS
+========================================================= -->
 
-        <section class="quick-links">
+<section class="quick-links">
 
 
-            <!-- Important -->
+    <!-- Important -->
 
-            <div class="quick-card">
+    <div class="quick-card">
 
-                <div class="quick-text">
+        <div>
 
-                    <h3>
-                        Important Links
-                    </h3>
+            <h3>
+                Important Links
+            </h3>
 
-                    <a href="#">
-                        CLICK HERE
-                    </a>
-
-                </div>
-
-
-                <div class="quick-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#1588e8"
-                        stroke-width="1.8"
-                    >
-
-                        <rect
-                            x="3"
-                            y="4"
-                            width="18"
-                            height="16"
-                            rx="2"
-                        ></rect>
-
-                        <path d="M3 8h18"></path>
-
-                        <path d="M7 12h10"></path>
-
-                        <path d="M7 15h7"></path>
-
-                    </svg>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Student Facilitation -->
-
-            <div class="quick-card">
-
-                <div class="quick-text">
-
-                    <h3>
-                        Student Facilitation
-                    </h3>
-
-                    <a href="#">
-                        CLICK TO VIEW
-                    </a>
-
-                </div>
-
-
-                <div
-                    class="quick-icon"
-                    style="background:#f1e8f5;"
-                >
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#a52bc6"
-                        stroke-width="1.8"
-                    >
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="9"
-                        ></circle>
-
-                        <path
-                            d="M10 8v8l6-4-6-4Z"
-                        ></path>
-
-                    </svg>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Anti Ragging -->
-
-            <div class="quick-card">
-
-                <div class="quick-text">
-
-                    <h3>
-                        Anti Ragging
-                    </h3>
-
-                    <a href="#">
-                        READ NOW
-                    </a>
-
-                </div>
-
-
-                <div
-                    class="quick-icon"
-                    style="background:#f0f1ff;"
-                >
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#7277df"
-                        stroke-width="1.8"
-                    >
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="9"
-                        ></circle>
-
-                        <path d="M9 9l6 6"></path>
-
-                        <path d="M15 9l-6 6"></path>
-
-                    </svg>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CU LMS -->
-
-            <div class="quick-card lms">
-
-                <div class="quick-text">
-
-                    <h3>
-                        CU LMS
-                    </h3>
-
-                    <a href="#">
-                        CLICK HERE
-                    </a>
-
-                </div>
-
-
-                <div class="quick-icon">
-
-                    <svg
-                        viewBox="0 0 48 48"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                    >
-
-                        <path
-                            d="M5 15 24 5l19 10-19 10L5 15Z"
-                        ></path>
-
-                        <path
-                            d="M11 18v11c0 4 6 8 13 8s13-4 13-8V18"
-                        ></path>
-
-                        <path
-                            d="M43 15v14"
-                        ></path>
-
-                    </svg>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Email -->
-
-            <div class="quick-card">
-
-                <div class="quick-text">
-
-                    <h3>
-                        My University Email
-                    </h3>
-
-                    <a href="#">
-                        VIEW DETAILS
-                    </a>
-
-                </div>
-
-
-                <div class="quick-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#1688e8"
-                        stroke-width="1.8"
-                    >
-
-                        <rect
-                            x="3"
-                            y="5"
-                            width="18"
-                            height="14"
-                            rx="2"
-                        ></rect>
-
-                        <path
-                            d="m4 7 8 6 8-6"
-                        ></path>
-
-                    </svg>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             PAGE TITLE
-        ====================================================== -->
-
-        <div class="page-title">
-            Hostel Leave Apply
-        </div>
-
-
-
-        <!-- WARNING -->
-
-        <div class="warning">
-
-            *Note: Once Leave is REJECTED,
-            You Can Reapply The Next Day.
+            <a href="#">
+                CLICK HERE
+            </a>
 
         </div>
 
 
+        <div class="quick-icon">
 
-        <!-- =====================================================
-             FORM
-        ====================================================== -->
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1688e8"
+                stroke-width="1.8"
+            >
 
-        <form
-            id="leaveForm"
-        >
+                <rect
+                    x="3"
+                    y="4"
+                    width="18"
+                    height="16"
+                    rx="2"
+                ></rect>
 
+                <path d="M3 8h18"></path>
 
-            <!-- Type -->
+                <path d="M7 12h10"></path>
 
-            <div class="form-row single">
+                <path d="M7 15h7"></path>
 
-                <label class="form-label">
-                    Type of Leave:
-                </label>
+            </svg>
 
-                <select id="leaveType">
-
-                    <option value="">
-                        Select Type
-                    </option>
-
-                    <option>
-                        Day Out
-                    </option>
-
-                    <option>
-                        Night Out
-                    </option>
-
-                    <option>
-                        Hostel Leave
-                    </option>
-
-                </select>
-
-            </div>
-
-
-
-            <!-- From / To -->
-
-            <div class="form-row">
-
-                <label class="form-label">
-                    From Date for<br>
-                    Leave:
-                </label>
-
-                <input
-                    type="date"
-                    id="fromDate"
-                >
-
-
-                <label class="form-label">
-                    To Date for Leave:
-                </label>
-
-                <input
-                    type="date"
-                    id="toDate"
-                >
-
-            </div>
-
-
-
-            <!-- Time -->
-
-            <div class="form-row">
-
-                <label class="form-label">
-
-                    Time From:
-                    <span class="field-help">
-                        (hh:mm AM/PM eg:11:00 AM/PM)
-                    </span>
-
-                </label>
-
-
-                <div class="time-field">
-
-                    <input
-                        type="text"
-                        id="timeFrom"
-                        value="09:28 PM"
-                    >
-
-
-                    <svg
-                        class="clock"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                    >
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="8"
-                        ></circle>
-
-                        <path
-                            d="M12 7v5l3 2"
-                        ></path>
-
-                    </svg>
-
-                </div>
-
-
-                <label class="form-label">
-
-                    Time To:
-                    <span class="field-help">
-                        (hh:mm AM/PM eg:11:00 AM/PM)
-                    </span>
-
-                </label>
-
-
-                <div class="time-field">
-
-                    <input
-                        type="text"
-                        id="timeTo"
-                        placeholder="--:-- --"
-                    >
-
-
-                    <svg
-                        class="clock"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                    >
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="8"
-                        ></circle>
-
-                        <path
-                            d="M12 7v5l3 2"
-                        ></path>
-
-                    </svg>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Days / Purpose -->
-
-            <div class="form-row">
-
-                <label class="form-label">
-
-                    Totals No. of<br>
-                    Days:
-
-                </label>
-
-
-                <input
-                    type="text"
-                    id="totalDays"
-                    disabled
-                >
-
-
-                <label class="form-label">
-                    Purpose of Leave:
-                </label>
-
-
-                <input
-                    type="text"
-                    id="purpose"
-                    placeholder="Enter purpose"
-                >
-
-            </div>
-
-
-
-            <!-- Confirmation -->
-
-            <div class="confirmation">
-
-                <input
-                    type="checkbox"
-                    id="confirmation"
-                >
-
-
-                <label for="confirmation">
-
-                    I confirm that I have informed my parents
-                    about my night out/day out leave, and I
-                    acknowledge that I am fully responsible for
-                    myself during this time.
-
-                </label>
-
-            </div>
-
-
-
-            <!-- Buttons -->
-
-            <div class="buttons">
-
-                <button
-                    type="submit"
-                    class="btn"
-                >
-                    SUBMIT
-                </button>
-
-                <button
-                    type="button"
-                    class="btn"
-                    onclick="resetForm()"
-                >
-                    CANCEL
-                </button>
-
-            </div>
-
-        </form>
-
-
-
-        <!-- HELP -->
-
-        <div class="help">
-            ?
         </div>
-
-
-
-        <!-- =====================================================
-             PREVIOUS LEAVE
-        ====================================================== -->
-
-        <section class="previous">
-
-
-            <h2 class="previous-title">
-                Previous Leave
-            </h2>
-
-
-
-            <!-- =================================================
-                 DESKTOP
-            ================================================== -->
-
-            <table class="desktop-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Applied on
-                        </th>
-
-                        <th>
-                            Name
-                        </th>
-
-                        <th>
-                            Type
-                        </th>
-
-                        <th>
-                            Purpose
-                        </th>
-
-                        <th>
-                            Remarks
-                        </th>
-
-                        <th>
-                            Action
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody>
-
-                    <tr>
-                        <td>26 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            Your Leave is approved from Hostel Warden
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>25 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>20 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>18 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>17 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>16 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>15 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>14 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>13 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>05 Sep 2026</td>
-                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                        <td>Day Out</td>
-                        <td>Shop</td>
-                        <td class="remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </td>
-                        <td></td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-
-
-            <!-- =================================================
-                 MOBILE
-            ================================================== -->
-
-            <div class="mobile-records">
-
-
-                <!-- 26 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>26 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            Your Leave is approved from Hostel Warden
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 25 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>25 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 20 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>20 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 18 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>18 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 17 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>17 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 16 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>16 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 15 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>15 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 14 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>14 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 13 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>13 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-
-                <!-- 05 SEP -->
-
-                <div class="record">
-
-                    <div class="record-row">
-                        <span class="record-label">APPLIED ON</span>
-                        <span>05 Sep 2026</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">NAME</span>
-                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">TYPE</span>
-                        <span>Day Out</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">PURPOSE</span>
-                        <span>Shop</span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">REMARKS</span>
-                        <span class="record-value remark">
-                            System Cancel the request due to you cannot check out on the apply date
-                        </span>
-                    </div>
-
-                    <div class="record-row">
-                        <span class="record-label">ACTION</span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
 
     </div>
 
 
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================== -->
+    <!-- Facilitation -->
 
-    <footer class="footer">
+    <div class="quick-card">
 
-        <span>
-            Chandigarh University, Gharuan, Mohali (Punjab)
-        </span>
+        <div>
 
-        <span>|</span>
+            <h3>
+                Student Facilitation
+            </h3>
 
-        <span class="footer-contact">
-            ☎ Helpline: 1800 257 1800
-        </span>
+            <a href="#">
+                CLICK TO VIEW
+            </a>
 
-        <span>|</span>
+        </div>
 
-        <span class="footer-contact">
-            ✉ Email: studentcare@cumail.in
-        </span>
 
-        <span class="bug">
-            Report a Bug
-        </span>
+        <div
+            class="quick-icon"
+            style="background:#f2e8f5;"
+        >
 
-    </footer>
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#a52bc6"
+                stroke-width="1.8"
+            >
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                ></circle>
+
+                <path
+                    d="M10 8v8l6-4-6-4Z"
+                ></path>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Anti Ragging -->
+
+    <div class="quick-card">
+
+        <div>
+
+            <h3>
+                Anti Ragging
+            </h3>
+
+            <a href="#">
+                READ NOW
+            </a>
+
+        </div>
+
+
+        <div
+            class="quick-icon"
+            style="background:#f0f1ff;"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#7277df"
+                stroke-width="1.8"
+            >
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                ></circle>
+
+                <path d="M9 9l6 6"></path>
+
+                <path d="M15 9l-6 6"></path>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- LMS -->
+
+    <div class="quick-card lms">
+
+        <div>
+
+            <h3>
+                CU LMS
+            </h3>
+
+            <a href="#">
+                CLICK HERE
+            </a>
+
+        </div>
+
+
+        <div class="quick-icon">
+
+            <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+
+                <path
+                    d="M5 15 24 5l19 10-19 10L5 15Z"
+                ></path>
+
+                <path
+                    d="M11 18v11c0 4 6 8 13 8s13-4 13-8V18"
+                ></path>
+
+                <path
+                    d="M43 15v14"
+                ></path>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Email -->
+
+    <div class="quick-card">
+
+        <div>
+
+            <h3>
+                My University Email
+            </h3>
+
+            <a href="#">
+                VIEW DETAILS
+            </a>
+
+        </div>
+
+
+        <div class="quick-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1688e8"
+                stroke-width="1.8"
+            >
+
+                <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2"
+                ></rect>
+
+                <path
+                    d="m4 7 8 6 8-6"
+                ></path>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TITLE
+========================================================= -->
+
+<div class="page-title">
+    Hostel Leave Apply
+</div>
+
+
+<div class="warning">
+    *Note: Once Leave is REJECTED,
+    You Can Reapply The Next Day.
+</div>
+
+
+
+<!-- =========================================================
+     FORM
+========================================================= -->
+
+<form id="leaveForm">
+
+
+    <!-- Type -->
+
+    <div class="form-row single">
+
+        <label class="form-label">
+            Type of Leave:
+        </label>
+
+        <select id="leaveType">
+
+            <option value="">
+                Select Type
+            </option>
+
+            <option>
+                Day Out
+            </option>
+
+            <option>
+                Night Out
+            </option>
+
+            <option>
+                Hostel Leave
+            </option>
+
+        </select>
+
+    </div>
+
+
+
+    <!-- Dates -->
+
+    <div class="form-row">
+
+        <label class="form-label">
+            From Date for<br>
+            Leave:
+        </label>
+
+        <input
+            type="date"
+            id="fromDate"
+        >
+
+
+        <label class="form-label">
+            To Date for Leave:
+        </label>
+
+        <input
+            type="date"
+            id="toDate"
+        >
+
+    </div>
+
+
+
+    <!-- Time -->
+
+    <div class="form-row">
+
+        <label class="form-label">
+
+            Time From:
+            <span class="field-help">
+                (hh:mm AM/PM eg:11:00 AM/PM)
+            </span>
+
+        </label>
+
+
+        <div class="time-field">
+
+            <input
+                type="text"
+                id="timeFrom"
+                value="09:28 PM"
+            >
+
+            <svg
+                class="clock"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="8"
+                ></circle>
+
+                <path
+                    d="M12 7v5l3 2"
+                ></path>
+
+            </svg>
+
+        </div>
+
+
+        <label class="form-label">
+
+            Time To:
+            <span class="field-help">
+                (hh:mm AM/PM eg:11:00 AM/PM)
+            </span>
+
+        </label>
+
+
+        <div class="time-field">
+
+            <input
+                type="text"
+                id="timeTo"
+                placeholder="--:-- --"
+            >
+
+            <svg
+                class="clock"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="8"
+                ></circle>
+
+                <path
+                    d="M12 7v5l3 2"
+                ></path>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Days -->
+
+    <div class="form-row">
+
+        <label class="form-label">
+            Totals No. of<br>
+            Days:
+        </label>
+
+        <input
+            type="text"
+            id="totalDays"
+            disabled
+        >
+
+
+        <label class="form-label">
+            Purpose of Leave:
+        </label>
+
+        <input
+            type="text"
+            id="purpose"
+            placeholder="Enter purpose"
+        >
+
+    </div>
+
+
+
+    <!-- Confirmation -->
+
+    <div class="confirmation">
+
+        <input
+            type="checkbox"
+            id="confirmation"
+        >
+
+        <label for="confirmation">
+
+            I confirm that I have informed my parents
+            about my night out/day out leave, and I
+            acknowledge that I am fully responsible for
+            myself during this time.
+
+        </label>
+
+    </div>
+
+
+
+    <!-- Buttons -->
+
+    <div class="buttons">
+
+        <button
+            type="submit"
+            class="btn"
+        >
+            SUBMIT
+        </button>
+
+        <button
+            type="button"
+            class="btn"
+            onclick="resetForm()"
+        >
+            CANCEL
+        </button>
+
+    </div>
+
+</form>
+
+
+
+<!-- Help -->
+
+<div class="help">
+    ?
+</div>
+
+
+
+<!-- =========================================================
+     PREVIOUS LEAVE
+========================================================= -->
+
+<section class="previous">
+
+
+<h2 class="previous-title">
+    Previous Leave
+</h2>
+
+
+
+<!-- =========================================================
+     DESKTOP TABLE
+========================================================= -->
+
+<table class="desktop-table">
+
+<thead>
+
+<tr>
+
+<th>Applied on</th>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Remarks</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="desktopLeaveBody">
+
+</tbody>
+
+</table>
+
+
+
+<!-- =========================================================
+     MOBILE RECORDS
+========================================================= -->
+
+<div
+    class="mobile-records"
+    id="mobileLeaveRecords"
+></div>
+
+
+</section>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <span>
+        Chandigarh University, Gharuan, Mohali (Punjab)
+    </span>
+
+    <span>|</span>
+
+    <span class="footer-contact">
+        ☎ Helpline: 1800 257 1800
+    </span>
+
+    <span>|</span>
+
+    <span class="footer-contact">
+        ✉ Email: studentcare@cumail.in
+    </span>
+
+    <span class="report-bug">
+        Report a Bug
+    </span>
+
+</footer>
 
 
 </main>
@@ -3056,297 +2504,582 @@
 
 <script>
 
+/* =========================================================
+   STUDENT DATA
+========================================================= */
 
-    /* =========================================================
-       SIDEBAR
-    ========================================================= */
+const students = {
 
-    function toggleSidebar() {
+    subhayu: {
 
-        const sidebar =
-            document.getElementById("sidebar");
+        name:
+            "SUBHAYU MUKHERJEE",
 
-        const main =
-            document.querySelector(".main");
+        displayName:
+            "SUBHAYU",
 
-        if (
-            window.innerWidth <= 768
-        ) {
+        uid:
+            "23BAD10022",
 
-            return;
+        image:
+            "subhayu.png"
 
-        }
+    },
 
-        if (
-            sidebar.style.display === "none"
-        ) {
+    nankul: {
 
-            sidebar.style.display = "block";
+        name:
+            "NANKUL ANTHAL",
 
-            main.style.marginLeft =
-                "310px";
+        displayName:
+            "NANKUL",
 
-        } else {
+        uid:
+            "26BBL70264",
 
-            sidebar.style.display = "none";
+        image:
+            "nankul.jpeg"
 
-            main.style.marginLeft =
-                "0";
+    }
 
-        }
+};
+
+
+/* =========================================================
+   LEAVE DATES
+========================================================= */
+
+const leaveDates = [
+
+    "26 Sep 2026",
+    "25 Sep 2026",
+    "20 Sep 2026",
+    "18 Sep 2026",
+    "17 Sep 2026",
+    "16 Sep 2026",
+    "15 Sep 2026",
+    "14 Sep 2026",
+    "13 Sep 2026",
+    "05 Sep 2026"
+
+];
+
+
+/* =========================================================
+   CURRENT USER
+========================================================= */
+
+let currentStudent = null;
+
+
+
+/* =========================================================
+   ENTER IMS
+========================================================= */
+
+function enterIMS() {
+
+    const selected =
+        document.getElementById(
+            "personSelect"
+        ).value;
+
+
+    if (!selected) {
+
+        alert(
+            "Please select a student."
+        );
+
+        return;
 
     }
 
 
-
-    /* =========================================================
-       HOSTEL
-    ========================================================= */
-
-    function toggleHostel() {
-
-        const menu =
-            document.getElementById(
-                "hostelMenu"
-            );
-
-        const arrow =
-            document.getElementById(
-                "hostelArrow"
-            );
+    localStorage.setItem(
+        "cuimsStudent",
+        selected
+    );
 
 
-        menu.classList.toggle("open");
+    loadStudent(
+        selected
+    );
 
 
-        if (
-            menu.classList.contains("open")
-        ) {
+    document
+        .getElementById(
+            "personScreen"
+        )
+        .style.display = "none";
 
-            arrow.textContent = "⌄";
+}
 
-        } else {
 
-            arrow.textContent = "›";
 
-        }
+/* =========================================================
+   LOAD STUDENT
+========================================================= */
 
+function loadStudent(key) {
+
+    if (!students[key]) {
+        return;
     }
 
 
-
-    /* =========================================================
-       HOSTEL LEAVE
-    ========================================================= */
-
-    function showHostelLeave(event) {
-
-        event.stopPropagation();
+    currentStudent =
+        students[key];
 
 
-        document
-            .querySelectorAll(".submenu-item")
-            .forEach(
-                item =>
-                    item.classList.remove(
-                        "selected"
-                    )
-            );
+    /*
+       IMPORTANT:
+       Only the DP appears in the header.
+       Name + UID are deliberately NOT shown.
+    */
+
+    document
+        .getElementById(
+            "userDP"
+        )
+        .src =
+            currentStudent.image;
 
 
-        event.currentTarget
-            .classList.add("selected");
+    /*
+       Rebuild Previous Leave
+       with selected student name.
+    */
 
+    renderLeaveRecords();
 
-        window.scrollTo({
-
-            top: 0,
-
-            behavior: "smooth"
-
-        });
-
-    }
+}
 
 
 
-    /* =========================================================
-       DATE CALCULATION
-    ========================================================= */
+/* =========================================================
+   RENDER LEAVE RECORDS
+========================================================= */
 
-    const fromDate =
+function renderLeaveRecords() {
+
+    const desktopBody =
         document.getElementById(
-            "fromDate"
-        );
-
-    const toDate =
-        document.getElementById(
-            "toDate"
-        );
-
-    const totalDays =
-        document.getElementById(
-            "totalDays"
+            "desktopLeaveBody"
         );
 
 
-    function calculateDays() {
+    const mobileRecords =
+        document.getElementById(
+            "mobileLeaveRecords"
+        );
 
-        if (
-            !fromDate.value ||
-            !toDate.value
-        ) {
 
-            totalDays.value = "";
+    desktopBody.innerHTML = "";
 
-            return;
+    mobileRecords.innerHTML = "";
+
+
+    leaveDates.forEach(
+        (date, index) => {
+
+
+            const isApproved =
+                index === 0;
+
+
+            const remark =
+                isApproved
+
+                ? "Your Leave is approved from Hostel Warden"
+
+                : "System Cancel the request due to you cannot check out on the apply date";
+
+
+            /* -------------------------------------------------
+               DESKTOP
+            ------------------------------------------------- */
+
+            desktopBody.innerHTML += `
+
+                <tr>
+
+                    <td>
+                        ${date}
+                    </td>
+
+                    <td>
+                        ${currentStudent.name}(${currentStudent.uid})
+                    </td>
+
+                    <td>
+                        Day Out
+                    </td>
+
+                    <td>
+                        Shop
+                    </td>
+
+                    <td class="remark">
+                        ${remark}
+                    </td>
+
+                    <td></td>
+
+                </tr>
+
+            `;
+
+
+            /* -------------------------------------------------
+               MOBILE
+            ------------------------------------------------- */
+
+            mobileRecords.innerHTML += `
+
+                <div class="record">
+
+                    <div class="record-row">
+
+                        <span class="record-label">
+                            APPLIED ON
+                        </span>
+
+                        <span class="record-value">
+                            ${date}
+                        </span>
+
+                    </div>
+
+
+                    <div class="record-row">
+
+                        <span class="record-label">
+                            NAME
+                        </span>
+
+                        <span class="record-value">
+                            ${currentStudent.name}(${currentStudent.uid})
+                        </span>
+
+                    </div>
+
+
+                    <div class="record-row">
+
+                        <span class="record-label">
+                            TYPE
+                        </span>
+
+                        <span class="record-value">
+                            Day Out
+                        </span>
+
+                    </div>
+
+
+                    <div class="record-row">
+
+                        <span class="record-label">
+                            PURPOSE
+                        </span>
+
+                        <span class="record-value">
+                            Shop
+                        </span>
+
+                    </div>
+
+
+                    <div class="record-row">
+
+                        <span class="record-label">
+                            REMARKS
+                        </span>
+
+                        <span class="record-value remark">
+                            ${remark}
+                        </span>
+
+                    </div>
+
+
+                    <div class="record-row">
+
+                        <span class="record-label">
+                            ACTION
+                        </span>
+
+                        <span class="record-value">
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
 
         }
+    );
+
+}
 
 
-        const start =
-            new Date(
-                fromDate.value
+
+/* =========================================================
+   ON PAGE LOAD
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        const saved =
+            localStorage.getItem(
+                "cuimsStudent"
             );
 
-        const end =
-            new Date(
-                toDate.value
-            );
 
+        if (saved && students[saved]) {
 
-        const difference =
-            Math.round(
-                (
-                    end - start
-                ) /
-                (
-                    1000 *
-                    60 *
-                    60 *
-                    24
+            document
+                .getElementById(
+                    "personSelect"
                 )
-            ) + 1;
+                .value =
+                    saved;
 
 
-        if (
-            difference > 0
-        ) {
+            loadStudent(saved);
 
-            totalDays.value =
-                difference;
 
-        } else {
-
-            totalDays.value = "";
+            document
+                .getElementById(
+                    "personScreen"
+                )
+                .style.display =
+                    "none";
 
         }
 
     }
+);
 
 
-    fromDate.addEventListener(
-        "change",
-        calculateDays
+
+/* =========================================================
+   DATE CALCULATION
+========================================================= */
+
+const fromDate =
+    document.getElementById(
+        "fromDate"
     );
 
-    toDate.addEventListener(
-        "change",
-        calculateDays
+
+const toDate =
+    document.getElementById(
+        "toDate"
     );
 
 
+const totalDays =
+    document.getElementById(
+        "totalDays"
+    );
 
-    /* =========================================================
-       RESET
-    ========================================================= */
 
-    function resetForm() {
+function calculateDays() {
 
-        document
-            .getElementById(
-                "leaveForm"
+    if (
+        !fromDate.value ||
+        !toDate.value
+    ) {
+
+        totalDays.value = "";
+
+        return;
+
+    }
+
+
+    const start =
+        new Date(
+            fromDate.value
+        );
+
+
+    const end =
+        new Date(
+            toDate.value
+        );
+
+
+    const difference =
+        Math.round(
+            (
+                end - start
+            ) /
+            (
+                1000 *
+                60 *
+                60 *
+                24
             )
-            .reset();
+        ) + 1;
+
+
+    if (difference > 0) {
+
+        totalDays.value =
+            difference;
+
+    } else {
 
         totalDays.value = "";
 
     }
 
+}
 
 
-    /* =========================================================
-       SUBMIT
-    ========================================================= */
+fromDate.addEventListener(
+    "change",
+    calculateDays
+);
+
+
+toDate.addEventListener(
+    "change",
+    calculateDays
+);
+
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetForm() {
 
     document
         .getElementById(
             "leaveForm"
         )
-        .addEventListener(
-            "submit",
-            function(event) {
-
-                event.preventDefault();
+        .reset();
 
 
-                const type =
-                    document.getElementById(
-                        "leaveType"
-                    ).value;
+    totalDays.value = "";
+
+}
 
 
-                const purpose =
-                    document.getElementById(
-                        "purpose"
-                    ).value;
+
+/* =========================================================
+   FORM SUBMISSION
+========================================================= */
+
+document
+    .getElementById(
+        "leaveForm"
+    )
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
 
 
-                const confirmation =
-                    document.getElementById(
-                        "confirmation"
-                    ).checked;
+            const type =
+                document.getElementById(
+                    "leaveType"
+                ).value;
 
 
-                if (!type) {
-
-                    alert(
-                        "Please select Type of Leave."
-                    );
-
-                    return;
-
-                }
+            const purpose =
+                document.getElementById(
+                    "purpose"
+                ).value;
 
 
-                if (!purpose) {
-
-                    alert(
-                        "Please enter the Purpose of Leave."
-                    );
-
-                    return;
-
-                }
+            const confirmation =
+                document.getElementById(
+                    "confirmation"
+                ).checked;
 
 
-                if (!confirmation) {
-
-                    alert(
-                        "Please confirm that you have informed your parents."
-                    );
-
-                    return;
-
-                }
-
+            if (!type) {
 
                 alert(
-                    "Leave application submitted successfully!"
+                    "Please select Type of Leave."
                 );
 
+                return;
+
             }
+
+
+            if (!purpose) {
+
+                alert(
+                    "Please enter the Purpose of Leave."
+                );
+
+                return;
+
+            }
+
+
+            if (!confirmation) {
+
+                alert(
+                    "Please confirm that you have informed your parents."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "Leave application submitted successfully!"
+            );
+
+        }
+    );
+
+
+
+/* =========================================================
+   HOSTEL MENU
+========================================================= */
+
+function toggleHostel() {
+
+    const menu =
+        document.getElementById(
+            "hostelMenu"
         );
+
+
+    const arrow =
+        document.getElementById(
+            "hostelArrow"
+        );
+
+
+    menu.classList.toggle(
+        "open"
+    );
+
+
+    arrow.textContent =
+        menu.classList.contains("open")
+            ? "⌄"
+            : "›";
+
+}
 
 </script>
 
