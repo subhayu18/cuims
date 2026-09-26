@@ -2,22 +2,28 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   user-scalable=no">
 
     <title>CU IMS - Hostel Leave Apply</title>
+
 
     <style>
 
         /* =========================================================
-           RESET
+           GLOBAL
         ========================================================= */
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html {
@@ -26,7 +32,7 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #f5f5fc;
+            background: #f5f5fb;
             color: #111;
             overflow-x: hidden;
         }
@@ -43,7 +49,9 @@
         ========================================================= */
 
         .topbar {
+
             position: fixed;
+
             top: 0;
             left: 0;
             right: 0;
@@ -51,7 +59,8 @@
             height: 85px;
 
             background: #ffffff;
-            border-bottom: 1px solid #ddd;
+
+            border-bottom: 1px solid #dddddd;
 
             display: flex;
             align-items: center;
@@ -59,17 +68,20 @@
             z-index: 1000;
         }
 
+
         /* Hamburger */
 
         .hamburger {
+
             width: 70px;
             height: 85px;
 
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
 
             cursor: pointer;
+
             flex-shrink: 0;
         }
 
@@ -78,26 +90,38 @@
         }
 
         .hamburger-lines span {
+
             display: block;
+
+            width: 100%;
             height: 2.5px;
+
             background: #333;
+
             margin: 5px 0;
-            border-radius: 2px;
+
+            border-radius: 3px;
         }
 
 
-        /* Real CU IMS logo */
+        /* CU LOGO */
 
         .logo-area {
+
             width: 245px;
+
             display: flex;
             align-items: center;
+
             padding-left: 5px;
         }
 
         .logo-area img {
+
             width: 145px;
+
             height: auto;
+
             display: block;
         }
 
@@ -105,14 +129,14 @@
         /* Search */
 
         .search-box {
+
             height: 56px;
-            flex: 1;
-            max-width: 750px;
+
+            width: min(750px, 100%);
 
             background: #f2f2f2;
-            border-radius: 30px;
 
-            margin-left: 10px;
+            border-radius: 30px;
 
             display: flex;
             align-items: center;
@@ -120,16 +144,19 @@
             padding: 0 28px;
 
             color: #777;
+
             font-size: 16px;
         }
 
-        .search-placeholder {
+        .search-text {
             flex: 1;
         }
 
         .search-icon {
+
             width: 20px;
             height: 20px;
+
             color: #555;
         }
 
@@ -137,31 +164,32 @@
         /* Header icons */
 
         .header-icons {
+
             margin-left: auto;
 
             display: flex;
             align-items: center;
 
-            gap: 27px;
+            gap: 26px;
 
             padding: 0 24px;
         }
 
         .header-icon {
-            width: 26px;
-            height: 26px;
+
+            width: 25px;
+            height: 25px;
 
             color: #777;
-
-            cursor: pointer;
         }
 
 
         /* Profile */
 
         .profile-box {
-            height: 85px;
+
             width: 190px;
+            height: 85px;
 
             border-left: 1px solid #e1e1e1;
 
@@ -173,38 +201,42 @@
             padding-left: 22px;
         }
 
-        .profile-details {
-            line-height: 1.1;
-        }
-
         .profile-name {
-            color: #274982;
+
+            color: #294982;
+
             font-size: 16px;
+
             font-weight: bold;
         }
 
         .profile-id {
+
             color: #777;
+
             font-size: 11px;
+
             margin-top: 4px;
         }
 
         .profile-image {
+
             width: 46px;
             height: 46px;
 
             border-radius: 50%;
-            overflow: hidden;
 
-            border: 1px solid #bbb;
+            overflow: hidden;
 
             background: #ddd;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            border: 1px solid #aaa;
 
-            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
         }
 
 
@@ -213,15 +245,17 @@
         ========================================================= */
 
         .sidebar {
+
             position: fixed;
 
             top: 85px;
-            bottom: 0;
             left: 0;
+            bottom: 0;
 
             width: 310px;
 
-            background: #fff;
+            background: #ffffff;
+
             border-right: 1px solid #ddd;
 
             overflow-y: auto;
@@ -230,6 +264,7 @@
         }
 
         .sidebar-item {
+
             min-height: 51px;
 
             padding: 0 18px;
@@ -242,25 +277,29 @@
 
             font-size: 17px;
 
-            cursor: pointer;
-
             line-height: 20px;
+
+            cursor: pointer;
         }
 
         .sidebar-item:hover {
-            background: #f5f6fa;
-        }
-
-        .sidebar-arrow {
-            font-size: 22px;
-            color: #1a4d8d;
-            flex-shrink: 0;
-            margin-left: 10px;
+            background: #f4f5f9;
         }
 
         .sidebar-item.active {
-            background: #45589c;
+
             color: white;
+
+            background: #45589c;
+        }
+
+        .sidebar-arrow {
+
+            font-size: 22px;
+
+            margin-left: 10px;
+
+            color: #1c4c8a;
         }
 
         .sidebar-item.active .sidebar-arrow {
@@ -272,7 +311,6 @@
 
         .hostel-submenu {
             display: none;
-            background: white;
         }
 
         .hostel-submenu.open {
@@ -280,6 +318,7 @@
         }
 
         .submenu-item {
+
             height: 43px;
 
             padding-left: 38px;
@@ -288,17 +327,16 @@
             align-items: center;
 
             color: #173d72;
+
             font-size: 16px;
 
             cursor: pointer;
         }
 
-        .submenu-item:hover {
-            background: #f3f5f9;
-        }
-
         .submenu-item.selected {
+
             background: #45589c;
+
             color: white;
         }
 
@@ -308,22 +346,26 @@
         ========================================================= */
 
         .main {
+
             margin-left: 310px;
+
             padding-top: 85px;
 
             min-height: 100vh;
         }
 
-        .page-content {
+        .content {
+
             padding: 32px 38px 0;
         }
 
 
         /* =========================================================
-           QUICK CARDS
+           QUICK LINKS
         ========================================================= */
 
         .quick-links {
+
             display: grid;
 
             grid-template-columns:
@@ -335,7 +377,8 @@
         }
 
         .quick-card {
-            min-height: 110px;
+
+            height: 110px;
 
             background: white;
 
@@ -344,10 +387,14 @@
             padding: 22px 24px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
-            box-shadow: 0 3px 15px rgba(35, 55, 100, 0.05);
+            box-shadow:
+                0 3px 14px
+                rgba(30,50,90,.05);
         }
 
         .quick-text {
@@ -355,23 +402,25 @@
         }
 
         .quick-card h3 {
+
             color: #27477f;
 
             font-size: 19px;
+
             line-height: 22px;
 
-            font-weight: 700;
-
-            margin-bottom: 16px;
+            margin-bottom: 15px;
 
             white-space: nowrap;
         }
 
         .quick-card a {
+
             color: #111;
-            text-decoration: none;
 
             font-size: 14px;
+
+            text-decoration: none;
 
             border-bottom: 1px solid #aaa;
 
@@ -379,9 +428,10 @@
         }
 
 
-        /* Icon boxes */
+        /* Quick card icons */
 
-        .quick-icon-box {
+        .quick-icon {
+
             width: 48px;
             height: 48px;
 
@@ -390,26 +440,29 @@
             background: #e8f5ff;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             flex-shrink: 0;
 
-            margin-left: 14px;
+            margin-left: 12px;
         }
 
-        .quick-icon-box svg {
+        .quick-icon svg {
+
             width: 29px;
             height: 29px;
         }
 
 
-        /* CU LMS */
+        /* LMS */
 
         .quick-card.lms {
+
             background: #285b87;
 
-            border: 2px solid #00e95d;
+            border: 2px solid #00ed5e;
         }
 
         .quick-card.lms h3,
@@ -417,27 +470,31 @@
             color: white;
         }
 
-        .quick-card.lms .quick-icon-box {
+        .quick-card.lms .quick-icon {
+
             background: transparent;
         }
 
-        .quick-card.lms .quick-icon-box svg {
+        .quick-card.lms .quick-icon svg {
+
             width: 38px;
             height: 38px;
+
             color: white;
         }
 
 
         /* =========================================================
-           PAGE TITLE
+           TITLE
         ========================================================= */
 
         .page-title {
+
             height: 57px;
 
-            border-radius: 12px;
-
             background: #4559a7;
+
+            border-radius: 12px;
 
             display: flex;
             align-items: center;
@@ -446,7 +503,8 @@
             color: white;
 
             font-size: 22px;
-            font-weight: 700;
+
+            font-weight: bold;
 
             margin-bottom: 25px;
         }
@@ -457,9 +515,10 @@
         ========================================================= */
 
         .warning {
-            text-align: center;
 
             color: red;
+
+            text-align: center;
 
             font-size: 16px;
 
@@ -471,18 +530,15 @@
            FORM
         ========================================================= */
 
-        .leave-form {
-            width: 100%;
-        }
-
         .form-row {
+
             display: grid;
 
             grid-template-columns:
                 155px
-                minmax(0, 1fr)
+                minmax(0,1fr)
                 215px
-                minmax(0, 1fr);
+                minmax(0,1fr);
 
             align-items: center;
 
@@ -492,37 +548,43 @@
         }
 
         .form-row.single {
+
             grid-template-columns:
                 215px
-                minmax(0, 1fr);
+                minmax(0,1fr);
         }
 
         .form-label {
+
             font-size: 16px;
-            font-weight: 700;
+
+            font-weight: bold;
 
             line-height: 22px;
-
-            color: #111;
         }
 
         .field-help {
+
             font-size: 13px;
-            font-weight: 700;
+
+            font-weight: bold;
         }
 
         select,
         input[type="date"],
         input[type="text"] {
+
             width: 100%;
+
             height: 44px;
 
-            border: 1px solid #cfcfcf;
+            border: 1px solid #cccccc;
+
             border-radius: 5px;
 
             background: white;
 
-            padding: 0 17px;
+            padding: 0 16px;
 
             color: #555;
 
@@ -533,8 +595,12 @@
 
         select:focus,
         input:focus {
+
             border-color: #536aa6;
-            box-shadow: 0 0 0 1px rgba(83, 106, 166, .15);
+
+            box-shadow:
+                0 0 0 1px
+                rgba(83,106,166,.15);
         }
 
         #totalDays {
@@ -546,32 +612,35 @@
         }
 
 
-        /* =========================================================
-           TIME INPUT
-        ========================================================= */
+        /* Time */
 
         .time-field {
             position: relative;
         }
 
         .time-field input {
+
             width: 100%;
+
             height: 44px;
 
-            border: 1px solid #cfcfcf;
+            border: 1px solid #cccccc;
+
             border-radius: 5px;
 
             padding: 0 16px;
 
-            font-size: 16px;
-
             color: #555;
+
+            font-size: 16px;
         }
 
-        .clock-icon {
+        .clock {
+
             position: absolute;
 
-            right: 18px;
+            right: 17px;
+
             top: 50%;
 
             transform: translateY(-50%);
@@ -584,61 +653,26 @@
 
 
         /* =========================================================
-           HELP BUTTON
-        ========================================================= */
-
-        .help-button {
-            position: absolute;
-
-            right: 25px;
-
-            top: 378px;
-
-            width: 57px;
-            height: 57px;
-
-            border-radius: 50%;
-
-            background: #70201e;
-
-            border: 3px solid white;
-
-            box-shadow: 0 0 0 1px #ddd;
-
-            color: white;
-
-            font-size: 35px;
-            font-weight: bold;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            z-index: 20;
-        }
-
-
-        /* =========================================================
            CONFIRMATION
         ========================================================= */
 
         .confirmation {
+
             display: flex;
+
             align-items: flex-start;
 
             gap: 7px;
 
-            margin-top: 4px;
-
             font-size: 16px;
-            font-weight: 700;
+
+            font-weight: bold;
 
             line-height: 24px;
-
-            color: #111;
         }
 
         .confirmation input {
+
             width: 16px;
             height: 16px;
 
@@ -652,8 +686,10 @@
            BUTTONS
         ========================================================= */
 
-        .form-buttons {
+        .buttons {
+
             display: flex;
+
             justify-content: center;
 
             gap: 5px;
@@ -662,7 +698,8 @@
         }
 
         .btn {
-            border: none;
+
+            border: 0;
 
             background: #ed1717;
 
@@ -673,7 +710,8 @@
             border-radius: 5px;
 
             font-size: 14px;
-            font-weight: 700;
+
+            font-weight: bold;
 
             cursor: pointer;
         }
@@ -684,20 +722,62 @@
 
 
         /* =========================================================
+           HELP BUTTON
+        ========================================================= */
+
+        .help {
+
+            position: fixed;
+
+            right: 22px;
+
+            bottom: 25px;
+
+            width: 57px;
+            height: 57px;
+
+            border-radius: 50%;
+
+            background: #70201e;
+
+            color: white;
+
+            border: 3px solid white;
+
+            box-shadow:
+                0 0 0 1px #ddd;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 36px;
+
+            font-weight: bold;
+
+            z-index: 1100;
+        }
+
+
+        /* =========================================================
            PREVIOUS LEAVE
         ========================================================= */
 
-        .previous-leave {
-            margin-top: 17px;
+        .previous {
+
+            margin-top: 18px;
         }
 
         .previous-title {
+
             font-size: 36px;
-            font-weight: 400;
+
+            font-weight: normal;
 
             color: #222;
 
-            padding-bottom: 22px;
+            padding-bottom: 21px;
 
             border-bottom: 1px solid #ddd;
 
@@ -707,11 +787,8 @@
 
         /* Desktop table */
 
-        .leave-table-wrapper {
-            overflow-x: auto;
-        }
+        .desktop-table {
 
-        .leave-table {
             width: 100%;
 
             border-collapse: collapse;
@@ -721,32 +798,28 @@
             font-size: 14px;
         }
 
-        .leave-table th {
-            background: #eeeeee;
+        .desktop-table th {
 
-            color: #111;
+            background: #eeeeee;
 
             text-align: left;
 
-            font-size: 14px;
-
-            font-weight: 700;
-
             padding: 8px 10px;
 
-            border: 1px solid #d5d5d5;
+            border: 1px solid #d4d4d4;
+
+            font-size: 14px;
         }
 
-        .leave-table td {
+        .desktop-table td {
+
             padding: 8px 10px;
 
-            border: 1px solid #d5d5d5;
-
-            color: #222;
-
-            vertical-align: middle;
+            border: 1px solid #d4d4d4;
 
             line-height: 18px;
+
+            vertical-align: middle;
         }
 
         .remark {
@@ -758,7 +831,7 @@
            MOBILE RECORDS
         ========================================================= */
 
-        .mobile-leaves {
+        .mobile-records {
             display: none;
         }
 
@@ -768,6 +841,7 @@
         ========================================================= */
 
         .footer {
+
             min-height: 55px;
 
             margin-top: 35px;
@@ -777,44 +851,34 @@
             color: white;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             gap: 12px;
 
-            padding: 12px 18px;
+            padding: 10px 20px;
 
             font-size: 15px;
-            font-weight: 700;
+
+            font-weight: bold;
 
             position: relative;
         }
 
         .footer-contact {
-            font-weight: 400;
+            font-weight: normal;
         }
 
-        .report-bug {
+        .bug {
+
             position: absolute;
 
             right: 16px;
 
             color: red;
 
-            font-weight: 700;
-        }
-
-
-        /* =========================================================
-           SIDEBAR HIDDEN STATE
-        ========================================================= */
-
-        body.sidebar-hidden .sidebar {
-            display: none;
-        }
-
-        body.sidebar-hidden .main {
-            margin-left: 0;
+            font-weight: bold;
         }
 
 
@@ -825,24 +889,24 @@
         @media (max-width: 1250px) {
 
             .quick-links {
-                grid-template-columns: repeat(3, 1fr);
+
+                grid-template-columns:
+                    repeat(3,1fr);
             }
 
             .form-row {
+
                 grid-template-columns:
                     150px
-                    minmax(0, 1fr)
+                    minmax(0,1fr)
                     190px
-                    minmax(0, 1fr);
+                    minmax(0,1fr);
             }
 
-            .help-button {
+            .help {
                 display: none;
             }
 
-            .header-icons {
-                gap: 15px;
-            }
         }
 
 
@@ -852,45 +916,52 @@
 
         @media (max-width: 768px) {
 
-            body {
-                background: #f4f4fa;
-            }
-
 
             /* -----------------------------------------------------
-               MOBILE HEADER
+               HEADER
             ----------------------------------------------------- */
 
             .topbar {
-                height: 48px;
 
-                position: fixed;
+                height: 45px;
 
-                box-shadow: 0 1px 3px rgba(0,0,0,.1);
+                box-shadow:
+                    0 1px 3px
+                    rgba(0,0,0,.12);
             }
 
             .hamburger {
-                width: 38px;
-                height: 48px;
+
+                width: 31px;
+
+                height: 45px;
             }
 
             .hamburger-lines {
-                width: 19px;
+                width: 18px;
             }
 
             .hamburger-lines span {
+
                 height: 2px;
-                margin: 3.5px 0;
+
+                margin: 3px 0;
             }
 
+
             .logo-area {
-                width: auto;
+
+                width: 76px;
+
                 padding-left: 0;
             }
 
             .logo-area img {
-                width: 62px;
-                max-height: 34px;
+
+                width: 72px;
+
+                max-height: 32px;
+
                 object-fit: contain;
             }
 
@@ -901,33 +972,32 @@
 
 
             .header-icons {
+
                 margin-left: auto;
 
-                gap: 8px;
+                gap: 9px;
 
-                padding: 0 5px;
+                padding: 0 6px;
             }
 
             .header-icon {
+
                 width: 14px;
                 height: 14px;
             }
 
-            .header-icons .header-icon:nth-child(1) {
-                display: none;
-            }
-
 
             .profile-box {
-                width: auto;
 
-                height: 48px;
+                width: 32px;
 
-                padding: 0 6px 0 5px;
+                height: 45px;
 
                 border-left: none;
 
-                gap: 0;
+                padding: 0;
+
+                justify-content: center;
             }
 
             .profile-details {
@@ -935,15 +1005,16 @@
             }
 
             .profile-image {
-                width: 28px;
-                height: 28px;
 
-                font-size: 13px;
+                width: 27px;
+                height: 27px;
+
+                font-size: 12px;
             }
 
 
             /* -----------------------------------------------------
-               MOBILE SIDEBAR
+               SIDEBAR
             ----------------------------------------------------- */
 
             .sidebar {
@@ -956,75 +1027,89 @@
             ----------------------------------------------------- */
 
             .main {
+
                 margin-left: 0;
 
-                padding-top: 48px;
-
-                min-height: 100vh;
+                padding-top: 45px;
             }
 
-            .page-content {
-                padding: 10px 6px 0;
+            .content {
+
+                padding:
+
+                    7px
+
+                    5px
+
+                    0;
             }
 
 
             /* -----------------------------------------------------
-               QUICK CARDS
+               QUICK LINKS
             ----------------------------------------------------- */
 
             .quick-links {
+
                 display: grid;
 
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns:
+                    1fr 1fr;
 
-                gap: 5px;
+                gap: 4px;
 
                 margin-bottom: 7px;
             }
 
             .quick-card {
-                min-height: 72px;
 
-                height: 72px;
+                height: 76px;
 
-                border-radius: 5px;
+                min-height: 76px;
 
-                padding: 8px 8px;
+                border-radius: 4px;
+
+                padding: 9px 8px;
             }
 
             .quick-card h3 {
-                font-size: 8.5px;
+
+                font-size: 9px;
 
                 line-height: 11px;
 
-                margin-bottom: 7px;
+                margin-bottom: 8px;
 
                 white-space: normal;
             }
 
             .quick-card a {
-                font-size: 6.5px;
+
+                font-size: 6.7px;
 
                 padding-bottom: 2px;
             }
 
-            .quick-icon-box {
-                width: 26px;
-                height: 26px;
+            .quick-icon {
+
+                width: 27px;
+                height: 27px;
 
                 border-radius: 5px;
 
-                margin-left: 4px;
+                margin-left: 5px;
             }
 
-            .quick-icon-box svg {
+            .quick-icon svg {
+
                 width: 17px;
                 height: 17px;
             }
 
-            .quick-card.lms .quick-icon-box svg {
-                width: 23px;
-                height: 23px;
+            .quick-card.lms .quick-icon svg {
+
+                width: 22px;
+                height: 22px;
             }
 
 
@@ -1033,13 +1118,14 @@
             ----------------------------------------------------- */
 
             .page-title {
-                height: 30px;
 
-                border-radius: 5px;
+                height: 27px;
+
+                border-radius: 4px;
 
                 font-size: 9px;
 
-                margin-bottom: 13px;
+                margin-bottom: 12px;
             }
 
 
@@ -1048,29 +1134,38 @@
             ----------------------------------------------------- */
 
             .warning {
+
                 font-size: 7px;
 
                 line-height: 10px;
 
-                margin-bottom: 11px;
+                margin:
+
+                    0
+
+                    25px
+
+                    10px;
             }
 
 
             /* -----------------------------------------------------
-               MOBILE FORM
+               FORM
             ----------------------------------------------------- */
 
             .form-row,
             .form-row.single {
+
                 display: block;
 
-                margin-bottom: 12px;
+                margin-bottom: 11px;
             }
 
             .form-label {
+
                 display: block;
 
-                font-size: 7px;
+                font-size: 8px;
 
                 line-height: 10px;
 
@@ -1078,44 +1173,49 @@
             }
 
             .field-help {
-                font-size: 6px;
+
+                font-size: 7px;
             }
 
             select,
             input[type="date"],
             input[type="text"] {
-                height: 25px;
+
+                height: 30px;
 
                 border-radius: 2px;
 
-                padding: 0 7px;
+                padding: 0 8px;
 
-                font-size: 7px;
+                font-size: 8px;
             }
 
             #purpose {
-                height: 25px;
+                height: 30px;
             }
 
 
             /* Time */
 
             .time-field {
-                margin-bottom: 12px;
+
+                margin-bottom: 11px;
             }
 
             .time-field input {
-                height: 25px;
+
+                height: 30px;
 
                 border-radius: 2px;
 
-                padding: 0 7px;
+                padding: 0 8px;
 
-                font-size: 7px;
+                font-size: 8px;
             }
 
-            .clock-icon {
-                right: 7px;
+            .clock {
+
+                right: 8px;
 
                 width: 11px;
                 height: 11px;
@@ -1125,16 +1225,18 @@
             /* Confirmation */
 
             .confirmation {
+
                 gap: 4px;
 
-                font-size: 6.5px;
+                font-size: 7px;
 
-                line-height: 8px;
+                line-height: 9px;
 
                 margin-top: 1px;
             }
 
             .confirmation input {
+
                 width: 10px;
                 height: 10px;
 
@@ -1144,14 +1246,16 @@
 
             /* Buttons */
 
-            .form-buttons {
+            .buttons {
+
                 margin-top: 9px;
 
                 gap: 3px;
             }
 
             .btn {
-                padding: 5px 9px;
+
+                padding: 5px 10px;
 
                 border-radius: 2px;
 
@@ -1160,18 +1264,14 @@
 
 
             /* -----------------------------------------------------
-               HELP BUTTON
+               HELP
             ----------------------------------------------------- */
 
-            .help-button {
-                display: flex;
+            .help {
 
-                position: fixed;
+                right: 6px;
 
-                right: 7px;
-                bottom: 7px;
-
-                top: auto;
+                bottom: 6px;
 
                 width: 29px;
                 height: 29px;
@@ -1179,75 +1279,96 @@
                 font-size: 19px;
 
                 border-width: 2px;
-
-                z-index: 1200;
             }
 
 
             /* -----------------------------------------------------
-               PREVIOUS LEAVE
+               PREVIOUS
             ----------------------------------------------------- */
 
-            .previous-leave {
-                margin-top: 8px;
+            .previous {
+
+                margin-top: 7px;
             }
 
             .previous-title {
-                font-size: 17px;
+
+                font-size: 18px;
 
                 padding-bottom: 6px;
 
-                margin-bottom: 5px;
+                border-bottom: 0;
+
+                margin-bottom: 4px;
             }
 
-            .leave-table-wrapper {
+
+            /* Hide desktop table */
+
+            .desktop-table {
                 display: none;
             }
 
-            .mobile-leaves {
+
+            /* Mobile records */
+
+            .mobile-records {
                 display: block;
             }
 
-            .mobile-leave-card {
+            .record {
+
                 background: white;
 
-                border: 1px solid #ddd;
+                border: 1px solid #dedede;
 
                 margin-bottom: 2px;
 
-                padding: 5px 6px;
+                padding: 4px 5px;
 
-                font-size: 6px;
+                font-size: 6.5px;
 
                 line-height: 9px;
             }
 
-            .mobile-leave-row {
+            .record-row {
+
                 display: grid;
 
-                grid-template-columns: 42px 1fr;
+                grid-template-columns:
+                    47px
+                    minmax(0,1fr);
 
-                border-bottom: 1px solid #eee;
+                min-height: 13px;
 
-                padding: 2px 0;
+                align-items: center;
+
+                border-bottom: 1px solid #ededed;
             }
 
-            .mobile-leave-row:last-child {
+            .record-row:last-child {
                 border-bottom: none;
             }
 
-            .mobile-leave-label {
-                font-weight: 700;
+            .record-label {
+
+                font-weight: bold;
 
                 color: #111;
             }
 
-            .mobile-leave-value {
+            .record-value {
+
                 color: #222;
+
+                word-break: normal;
             }
 
-            .mobile-leave-value.remark {
+            .record-value.remark {
+
                 color: #0000ee;
+
+                line-height: 9px;
             }
 
 
@@ -1256,11 +1377,20 @@
             ----------------------------------------------------- */
 
             .footer {
-                min-height: 42px;
+
+                min-height: 44px;
 
                 margin-top: 10px;
 
-                padding: 5px 35px 5px 8px;
+                padding:
+
+                    6px
+
+                    35px
+
+                    6px
+
+                    7px;
 
                 display: block;
 
@@ -1272,17 +1402,18 @@
             }
 
             .footer-contact {
+
                 font-size: 6px;
             }
 
-            .report-bug {
+            .bug {
+
                 right: 5px;
+
                 bottom: 5px;
 
-                font-size: 0;
-
-                width: 19px;
-                height: 19px;
+                width: 22px;
+                height: 22px;
 
                 border-radius: 50%;
 
@@ -1290,15 +1421,19 @@
 
                 color: white;
 
+                font-size: 0;
+
                 display: flex;
-                justify-content: center;
+
                 align-items: center;
+                justify-content: center;
             }
 
-            .report-bug::after {
+            .bug::after {
+
                 content: "?";
 
-                font-size: 13px;
+                font-size: 14px;
 
                 font-weight: bold;
             }
@@ -1307,34 +1442,44 @@
 
 
         /* =========================================================
-           VERY SMALL PHONES
+           VERY SMALL PHONE
         ========================================================= */
 
-        @media (max-width: 380px) {
+        @media (max-width: 360px) {
 
             .quick-card {
-                height: 68px;
-                min-height: 68px;
+
+                height: 73px;
+
+                min-height: 73px;
             }
 
             .quick-card h3 {
-                font-size: 8px;
-            }
-
-            .quick-card a {
-                font-size: 6px;
-            }
-
-            .page-title {
                 font-size: 8.5px;
             }
 
-            .previous-title {
-                font-size: 16px;
+            .quick-card a {
+                font-size: 6.3px;
             }
+
+            .form-label {
+                font-size: 7.5px;
+            }
+
+            select,
+            input[type="date"],
+            input[type="text"] {
+                font-size: 7.5px;
+            }
+
+            .confirmation {
+                font-size: 6.5px;
+            }
+
         }
 
     </style>
+
 </head>
 
 
@@ -1347,20 +1492,26 @@
 
 <header class="topbar">
 
+
     <!-- Hamburger -->
 
-    <div class="hamburger" onclick="toggleSidebar()">
+    <div
+        class="hamburger"
+        onclick="toggleSidebar()"
+    >
 
         <div class="hamburger-lines">
+
             <span></span>
             <span></span>
             <span></span>
+
         </div>
 
     </div>
 
 
-    <!-- REAL CU IMS LOGO -->
+    <!-- CU IMS -->
 
     <div class="logo-area">
 
@@ -1376,21 +1527,32 @@
 
     <div class="search-box">
 
-        <span class="search-placeholder">
+        <span class="search-text">
             Search &amp; Bookmark your page
         </span>
+
 
         <svg
             class="search-icon"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke-width="2.3"
         >
-            <circle cx="11" cy="11" r="7"></circle>
-            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+
+            <circle
+                cx="11"
+                cy="11"
+                r="7"
+            ></circle>
+
+            <line
+                x1="16.5"
+                y1="16.5"
+                x2="21"
+                y2="21"
+            ></line>
+
         </svg>
 
     </div>
@@ -1400,6 +1562,7 @@
 
     <div class="header-icons">
 
+
         <!-- Bell -->
 
         <svg
@@ -1407,10 +1570,15 @@
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.8"
+            stroke-width="1.7"
         >
-            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+
+            <path
+                d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+            ></path>
+
             <path d="M10 21h4"></path>
+
         </svg>
 
 
@@ -1421,10 +1589,15 @@
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.8"
+            stroke-width="1.7"
         >
-            <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"></path>
+
+            <path
+                d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"
+            ></path>
+
             <path d="M4 5.5V20"></path>
+
         </svg>
 
 
@@ -1435,12 +1608,15 @@
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linejoin="round"
+            stroke-width="1.7"
         >
+
             <path d="M3 10.5 12 3l9 7.5"></path>
+
             <path d="M5 9.5V21h14V9.5"></path>
+
             <path d="M9 21v-6h6v6"></path>
+
         </svg>
 
 
@@ -1451,10 +1627,60 @@
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.8"
+            stroke-width="1.7"
         >
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V20h-2.6v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 0 0 8 15a1.7 1.7 0 0 0-1.6-1H6v-2.6h.4A1.7 1.7 0 0 0 8 10.4a1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V5h2.6v.4a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.4V14h-.4a1.7 1.7 0 0 0-1.6 1Z"></path>
+
+            <circle
+                cx="12"
+                cy="12"
+                r="3"
+            ></circle>
+
+            <path
+                d="
+                M19.4 15
+                a1.7 1.7 0 0 0 .3 1.9
+                l.1.1
+                -1.8 1.8
+                -.1-.1
+                a1.7 1.7 0 0 0-1.9-.3
+                1.7 1.7 0 0 0-1 1.6
+                V20
+                h-2.6
+                v-.1
+                a1.7 1.7 0 0 0-1-1.6
+                1.7 1.7 0 0 0-1.9.3
+                l-.1.1
+                -1.8-1.8
+                .1-.1
+                A1.7 1.7 0 0 0 8 15
+                1.7 1.7 0 0 0 6.4 14
+                H6
+                v-2.6
+                h.4
+                A1.7 1.7 0 0 0 8 10.4
+                a1.7 1.7 0 0 0-.3-1.9
+                l-.1-.1
+                1.8-1.8
+                .1.1
+                a1.7 1.7 0 0 0 1.9.3
+                1.7 1.7 0 0 0 1-1.6
+                V5
+                h2.6
+                v.4
+                a1.7 1.7 0 0 0 1 1.6
+                1.7 1.7 0 0 0 1.9-.3
+                l.1-.1
+                1.8 1.8
+                -.1.1
+                a1.7 1.7 0 0 0-.3 1.9
+                1.7 1.7 0 0 0 1.6 1
+                h.4
+                V14
+                h-.4
+                a1.7 1.7 0 0 0-1.6 1Z"
+            ></path>
+
         </svg>
 
     </div>
@@ -1464,7 +1690,7 @@
 
     <div class="profile-box">
 
-        <div class="profile-details">
+        <div>
 
             <div class="profile-name">
                 SUBHAYU
@@ -1475,6 +1701,7 @@
             </div>
 
         </div>
+
 
         <div class="profile-image">
             👨🏻
@@ -1490,7 +1717,10 @@
      SIDEBAR
 ============================================================= -->
 
-<aside class="sidebar" id="sidebar">
+<aside
+    class="sidebar"
+    id="sidebar"
+>
 
 
     <div class="sidebar-item">
@@ -1572,7 +1802,9 @@
         <span
             class="sidebar-arrow"
             id="hostelArrow"
-        >⌄</span>
+        >
+            ⌄
+        </span>
 
     </div>
 
@@ -1683,12 +1915,13 @@
 
 
 <!-- =============================================================
-     MAIN CONTENT
+     MAIN
 ============================================================= -->
 
 <main class="main">
 
-    <div class="page-content">
+
+    <div class="content">
 
 
         <!-- =====================================================
@@ -1698,7 +1931,7 @@
         <section class="quick-links">
 
 
-            <!-- Important Links -->
+            <!-- Important -->
 
             <div class="quick-card">
 
@@ -1715,14 +1948,15 @@
                 </div>
 
 
-                <div class="quick-icon-box">
+                <div class="quick-icon">
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#1686e8"
+                        stroke="#1588e8"
                         stroke-width="1.8"
                     >
+
                         <rect
                             x="3"
                             y="4"
@@ -1736,6 +1970,7 @@
                         <path d="M7 12h10"></path>
 
                         <path d="M7 15h7"></path>
+
                     </svg>
 
                 </div>
@@ -1762,14 +1997,14 @@
 
 
                 <div
-                    class="quick-icon-box"
-                    style="background:#f2e8f5;"
+                    class="quick-icon"
+                    style="background:#f1e8f5;"
                 >
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#a528c7"
+                        stroke="#a52bc6"
                         stroke-width="1.8"
                     >
 
@@ -1780,8 +2015,7 @@
                         ></circle>
 
                         <path
-                            d="M10 8.5v7l6-3.5-6-3.5Z"
-                            fill="none"
+                            d="M10 8v8l6-4-6-4Z"
                         ></path>
 
                     </svg>
@@ -1810,14 +2044,14 @@
 
 
                 <div
-                    class="quick-icon-box"
+                    class="quick-icon"
                     style="background:#f0f1ff;"
                 >
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#6f75df"
+                        stroke="#7277df"
                         stroke-width="1.8"
                     >
 
@@ -1827,8 +2061,9 @@
                             r="9"
                         ></circle>
 
-                        <path d="m9 9 6 6"></path>
-                        <path d="m15 9-6 6"></path>
+                        <path d="M9 9l6 6"></path>
+
+                        <path d="M15 9l-6 6"></path>
 
                     </svg>
 
@@ -1855,7 +2090,7 @@
                 </div>
 
 
-                <div class="quick-icon-box">
+                <div class="quick-icon">
 
                     <svg
                         viewBox="0 0 48 48"
@@ -1901,12 +2136,12 @@
                 </div>
 
 
-                <div class="quick-icon-box">
+                <div class="quick-icon">
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#1686e8"
+                        stroke="#1688e8"
                         stroke-width="1.8"
                     >
 
@@ -1945,22 +2180,24 @@
         <!-- WARNING -->
 
         <div class="warning">
-            *Note: Once Leave is REJECTED, You Can Reapply The Next Day.
+
+            *Note: Once Leave is REJECTED,
+            You Can Reapply The Next Day.
+
         </div>
 
 
 
         <!-- =====================================================
-             LEAVE FORM
+             FORM
         ====================================================== -->
 
         <form
-            class="leave-form"
             id="leaveForm"
         >
 
 
-            <!-- TYPE -->
+            <!-- Type -->
 
             <div class="form-row single">
 
@@ -1992,7 +2229,7 @@
 
 
 
-            <!-- DATES -->
+            <!-- From / To -->
 
             <div class="form-row">
 
@@ -2020,7 +2257,7 @@
 
 
 
-            <!-- TIME FROM -->
+            <!-- Time -->
 
             <div class="form-row">
 
@@ -2033,6 +2270,7 @@
 
                 </label>
 
+
                 <div class="time-field">
 
                     <input
@@ -2041,8 +2279,9 @@
                         value="09:28 PM"
                     >
 
+
                     <svg
-                        class="clock-icon"
+                        class="clock"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -2055,7 +2294,9 @@
                             r="8"
                         ></circle>
 
-                        <path d="M12 7v5l3 2"></path>
+                        <path
+                            d="M12 7v5l3 2"
+                        ></path>
 
                     </svg>
 
@@ -2071,6 +2312,7 @@
 
                 </label>
 
+
                 <div class="time-field">
 
                     <input
@@ -2079,8 +2321,9 @@
                         placeholder="--:-- --"
                     >
 
+
                     <svg
-                        class="clock-icon"
+                        class="clock"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -2093,7 +2336,9 @@
                             r="8"
                         ></circle>
 
-                        <path d="M12 7v5l3 2"></path>
+                        <path
+                            d="M12 7v5l3 2"
+                        ></path>
 
                     </svg>
 
@@ -2103,14 +2348,17 @@
 
 
 
-            <!-- DAYS + PURPOSE -->
+            <!-- Days / Purpose -->
 
             <div class="form-row">
 
                 <label class="form-label">
+
                     Totals No. of<br>
                     Days:
+
                 </label>
+
 
                 <input
                     type="text"
@@ -2123,6 +2371,7 @@
                     Purpose of Leave:
                 </label>
 
+
                 <input
                     type="text"
                     id="purpose"
@@ -2133,7 +2382,7 @@
 
 
 
-            <!-- CONFIRMATION -->
+            <!-- Confirmation -->
 
             <div class="confirmation">
 
@@ -2142,10 +2391,13 @@
                     id="confirmation"
                 >
 
+
                 <label for="confirmation">
 
-                    I confirm that I have informed my parents about my night out/day out leave,
-                    and I acknowledge that I am fully responsible for myself during this time.
+                    I confirm that I have informed my parents
+                    about my night out/day out leave, and I
+                    acknowledge that I am fully responsible for
+                    myself during this time.
 
                 </label>
 
@@ -2153,20 +2405,20 @@
 
 
 
-            <!-- BUTTONS -->
+            <!-- Buttons -->
 
-            <div class="form-buttons">
+            <div class="buttons">
 
                 <button
-                    class="btn"
                     type="submit"
+                    class="btn"
                 >
                     SUBMIT
                 </button>
 
                 <button
-                    class="btn"
                     type="button"
+                    class="btn"
                     onclick="resetForm()"
                 >
                     CANCEL
@@ -2178,11 +2430,9 @@
 
 
 
-        <!-- =====================================================
-             HELP BUTTON
-        ====================================================== -->
+        <!-- HELP -->
 
-        <div class="help-button">
+        <div class="help">
             ?
         </div>
 
@@ -2192,7 +2442,8 @@
              PREVIOUS LEAVE
         ====================================================== -->
 
-        <section class="previous-leave">
+        <section class="previous">
+
 
             <h2 class="previous-title">
                 Previous Leave
@@ -2200,217 +2451,204 @@
 
 
 
-            <!-- DESKTOP TABLE -->
+            <!-- =================================================
+                 DESKTOP
+            ================================================== -->
 
-            <div class="leave-table-wrapper">
+            <table class="desktop-table">
 
-                <table class="leave-table">
+                <thead>
 
-                    <thead>
+                    <tr>
 
-                        <tr>
+                        <th>
+                            Applied on
+                        </th>
 
-                            <th style="width:125px;">
-                                Applied on
-                            </th>
+                        <th>
+                            Name
+                        </th>
 
-                            <th style="width:330px;">
-                                Name
-                            </th>
+                        <th>
+                            Type
+                        </th>
 
-                            <th style="width:90px;">
-                                Type
-                            </th>
+                        <th>
+                            Purpose
+                        </th>
 
-                            <th style="width:120px;">
-                                Purpose
-                            </th>
+                        <th>
+                            Remarks
+                        </th>
 
-                            <th>
-                                Remarks
-                            </th>
+                        <th>
+                            Action
+                        </th>
 
-                            <th style="width:90px;">
-                                Action
-                            </th>
+                    </tr>
 
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-                        <tr>
-                            <td>26 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                Your Leave is approved from Hostel Warden
-                            </td>
-                            <td></td>
-                        </tr>
+                </thead>
 
 
-                        <tr>
-                            <td>25 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
+                <tbody>
 
+                    <tr>
+                        <td>26 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            Your Leave is approved from Hostel Warden
+                        </td>
+                        <td></td>
+                    </tr>
 
-                        <tr>
-                            <td>20 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
+                    <tr>
+                        <td>25 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
+                    <tr>
+                        <td>20 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
-                        <tr>
-                            <td>18 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
+                    <tr>
+                        <td>18 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
+                    <tr>
+                        <td>17 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
-                        <tr>
-                            <td>17 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
+                    <tr>
+                        <td>16 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
+                    <tr>
+                        <td>15 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
-                        <tr>
-                            <td>16 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
+                    <tr>
+                        <td>14 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
+                    <tr>
+                        <td>13 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
-                        <tr>
-                            <td>15 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
+                    <tr>
+                        <td>05 Sep 2026</td>
+                        <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
+                        <td>Day Out</td>
+                        <td>Shop</td>
+                        <td class="remark">
+                            System Cancel the request due to you cannot check out on the apply date
+                        </td>
+                        <td></td>
+                    </tr>
 
+                </tbody>
 
-                        <tr>
-                            <td>14 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
-
-
-                        <tr>
-                            <td>13 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
-
-
-                        <tr>
-                            <td>05 Sep 2026</td>
-                            <td>SUBHAYU MUKHERJEE(23BAD10022)</td>
-                            <td>Day Out</td>
-                            <td>Shop</td>
-                            <td class="remark">
-                                System Cancel the request due to you cannot check out on the apply date
-                            </td>
-                            <td></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
+            </table>
 
 
 
             <!-- =================================================
-                 MOBILE LEAVE RECORDS
+                 MOBILE
             ================================================== -->
 
-            <div class="mobile-leaves">
+            <div class="mobile-records">
 
 
                 <!-- 26 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">26 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>26 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             Your Leave is approved from Hostel Warden
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2419,40 +2657,38 @@
 
                 <!-- 25 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">25 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>25 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2461,40 +2697,38 @@
 
                 <!-- 20 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">20 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>20 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2503,40 +2737,38 @@
 
                 <!-- 18 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">18 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>18 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2545,40 +2777,38 @@
 
                 <!-- 17 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">17 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>17 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2587,40 +2817,38 @@
 
                 <!-- 16 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">16 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>16 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2629,40 +2857,38 @@
 
                 <!-- 15 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">15 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>15 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2671,40 +2897,38 @@
 
                 <!-- 14 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">14 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>14 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2713,40 +2937,38 @@
 
                 <!-- 13 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">13 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>13 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2755,40 +2977,38 @@
 
                 <!-- 05 SEP -->
 
-                <div class="mobile-leave-card">
+                <div class="record">
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">APPLIED ON</span>
-                        <span class="mobile-leave-value">05 Sep 2026</span>
+                    <div class="record-row">
+                        <span class="record-label">APPLIED ON</span>
+                        <span>05 Sep 2026</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">NAME</span>
-                        <span class="mobile-leave-value">
-                            SUBHAYU MUKHERJEE(23BAD10022)
-                        </span>
+                    <div class="record-row">
+                        <span class="record-label">NAME</span>
+                        <span>SUBHAYU MUKHERJEE(23BAD10022)</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">TYPE</span>
-                        <span class="mobile-leave-value">Day Out</span>
+                    <div class="record-row">
+                        <span class="record-label">TYPE</span>
+                        <span>Day Out</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">PURPOSE</span>
-                        <span class="mobile-leave-value">Shop</span>
+                    <div class="record-row">
+                        <span class="record-label">PURPOSE</span>
+                        <span>Shop</span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">REMARKS</span>
-                        <span class="mobile-leave-value remark">
+                    <div class="record-row">
+                        <span class="record-label">REMARKS</span>
+                        <span class="record-value remark">
                             System Cancel the request due to you cannot check out on the apply date
                         </span>
                     </div>
 
-                    <div class="mobile-leave-row">
-                        <span class="mobile-leave-label">ACTION</span>
-                        <span class="mobile-leave-value"></span>
+                    <div class="record-row">
+                        <span class="record-label">ACTION</span>
+                        <span></span>
                     </div>
 
                 </div>
@@ -2823,11 +3043,12 @@
             ✉ Email: studentcare@cumail.in
         </span>
 
-        <span class="report-bug">
+        <span class="bug">
             Report a Bug
         </span>
 
     </footer>
+
 
 </main>
 
@@ -2835,32 +3056,72 @@
 
 <script>
 
+
     /* =========================================================
        SIDEBAR
     ========================================================= */
 
     function toggleSidebar() {
 
-        document.body.classList.toggle("sidebar-hidden");
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const main =
+            document.querySelector(".main");
+
+        if (
+            window.innerWidth <= 768
+        ) {
+
+            return;
+
+        }
+
+        if (
+            sidebar.style.display === "none"
+        ) {
+
+            sidebar.style.display = "block";
+
+            main.style.marginLeft =
+                "310px";
+
+        } else {
+
+            sidebar.style.display = "none";
+
+            main.style.marginLeft =
+                "0";
+
+        }
 
     }
 
 
+
     /* =========================================================
-       HOSTEL MENU
+       HOSTEL
     ========================================================= */
 
     function toggleHostel() {
 
         const menu =
-            document.getElementById("hostelMenu");
+            document.getElementById(
+                "hostelMenu"
+            );
 
         const arrow =
-            document.getElementById("hostelArrow");
+            document.getElementById(
+                "hostelArrow"
+            );
+
 
         menu.classList.toggle("open");
 
-        if (menu.classList.contains("open")) {
+
+        if (
+            menu.classList.contains("open")
+        ) {
 
             arrow.textContent = "⌄";
 
@@ -2873,6 +3134,7 @@
     }
 
 
+
     /* =========================================================
        HOSTEL LEAVE
     ========================================================= */
@@ -2881,20 +3143,31 @@
 
         event.stopPropagation();
 
+
         document
             .querySelectorAll(".submenu-item")
-            .forEach(item => {
-                item.classList.remove("selected");
-            });
+            .forEach(
+                item =>
+                    item.classList.remove(
+                        "selected"
+                    )
+            );
 
-        event.currentTarget.classList.add("selected");
+
+        event.currentTarget
+            .classList.add("selected");
+
 
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
 
     }
+
 
 
     /* =========================================================
@@ -2902,13 +3175,19 @@
     ========================================================= */
 
     const fromDate =
-        document.getElementById("fromDate");
+        document.getElementById(
+            "fromDate"
+        );
 
     const toDate =
-        document.getElementById("toDate");
+        document.getElementById(
+            "toDate"
+        );
 
     const totalDays =
-        document.getElementById("totalDays");
+        document.getElementById(
+            "totalDays"
+        );
 
 
     function calculateDays() {
@@ -2921,24 +3200,38 @@
             totalDays.value = "";
 
             return;
+
         }
 
 
         const start =
-            new Date(fromDate.value);
+            new Date(
+                fromDate.value
+            );
 
         const end =
-            new Date(toDate.value);
+            new Date(
+                toDate.value
+            );
 
 
         const difference =
             Math.round(
-                (end - start) /
-                (1000 * 60 * 60 * 24)
+                (
+                    end - start
+                ) /
+                (
+                    1000 *
+                    60 *
+                    60 *
+                    24
+                )
             ) + 1;
 
 
-        if (difference > 0) {
+        if (
+            difference > 0
+        ) {
 
             totalDays.value =
                 difference;
@@ -2971,7 +3264,9 @@
     function resetForm() {
 
         document
-            .getElementById("leaveForm")
+            .getElementById(
+                "leaveForm"
+            )
             .reset();
 
         totalDays.value = "";
@@ -2985,7 +3280,9 @@
     ========================================================= */
 
     document
-        .getElementById("leaveForm")
+        .getElementById(
+            "leaveForm"
+        )
         .addEventListener(
             "submit",
             function(event) {
@@ -3018,6 +3315,7 @@
                     );
 
                     return;
+
                 }
 
 
@@ -3028,6 +3326,7 @@
                     );
 
                     return;
+
                 }
 
 
@@ -3038,6 +3337,7 @@
                     );
 
                     return;
+
                 }
 
 
@@ -3052,4 +3352,5 @@
 
 
 </body>
+
 </html>
